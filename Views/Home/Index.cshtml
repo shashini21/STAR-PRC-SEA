@@ -28,6 +28,69 @@
 </head>
 
 
+    <div id="exitModal" class="exit-modal">
+
+    <div class="exit-modal-box">
+
+        <!-- Close button -->
+
+        <button type="button"
+                class="exit-modal-close"
+                onclick="closeExitModal()">
+            
+        </button>
+
+
+        <!-- Icon -->
+
+        <div class="exit-modal-icon">
+            
+        </div>
+
+
+        <!-- Title -->
+
+        <h2>
+            LOG OUT?
+        </h2>
+
+
+        <!-- Message -->
+
+        <p>
+            Are you sure you want to LogOut the
+            Pre-Costing System?
+        </p>
+
+
+        <!-- Buttons -->
+
+        <div class="exit-modal-buttons">
+
+            <button type="button"
+                    class="cancel-exit-button"
+                    onclick="closeExitModal()">
+
+                Cancel
+
+            </button>
+
+
+            <button type="button"
+                    class="confirm-exit-button"
+                    onclick="exitApplication()">
+
+                LogOut
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <body>
 
     <div class="dashboard-container">
@@ -247,23 +310,24 @@
 
                 </div>
 
-
              
-
-                <a href="@Url.Action("Logout", "Account")"
-                   class="menu-item exit-item">
+                <button type="button"
+                        class="menu-item exit-item"
+                        onclick="showExitModal()">
 
                     <span class="menu-icon">↪</span>
 
-                    <span>Exit</span>
+                    <span>LogOut</span>
 
-                </a>
+                </button>
+
+              
 
 
             </nav>
 
 
-            <!-- SIDEBAR FOOTER -->
+          
 
             <div class="sidebar-footer">
 
@@ -281,14 +345,11 @@
         </aside>
 
 
-        <!-- =========================================
-             MAIN CONTENT
-             ========================================= -->
 
         <main class="main-content">
 
 
-            <!-- TOP BAR -->
+          
 
             <header class="topbar">
 
@@ -305,7 +366,7 @@
                 </div>
 
 
-                <!-- USER -->
+         
 
                 <div class="user-area">
 
@@ -334,9 +395,7 @@
             </header>
 
 
-            <!-- =====================================
-                 DASHBOARD CONTENT
-                 ===================================== -->
+            
 
             <section class="dashboard-content">
 
@@ -516,6 +575,96 @@
                 }
 
             }
+
+    </script>
+    <script>
+
+           
+
+            function showExitModal() {
+
+                const modal =
+                    document.getElementById("exitModal");
+
+                modal.classList.add("show");
+            }
+
+
+
+            function closeExitModal() {
+
+                const modal =
+                    document.getElementById("exitModal");
+
+                modal.classList.remove("show");
+            }
+
+
+
+            function exitApplication() {
+
+                // Close the confirmation box
+                closeExitModal();
+
+
+                // Clear session and logout
+                fetch('/Account/Logout', {
+                    method: 'POST'
+                })
+                    .then(function() {
+
+                        // Try to close the browser window
+                        window.close();
+
+
+                        // If browser prevents closing,
+                        // return to login page
+                        setTimeout(function() {
+
+                            window.location.href =
+                                '/Account/Login';
+
+                        }, 300);
+
+                    })
+                    .catch(function() {
+
+                        window.location.href =
+                            '/Account/Login';
+
+                    });
+
+            }
+
+
+           
+
+            document
+                .getElementById("exitModal")
+                .addEventListener("click", function(event) {
+
+                    if (event.target === this) {
+
+                        closeExitModal();
+
+                    }
+
+                });
+
+
+           
+            document.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Escape") {
+
+                        closeExitModal();
+
+                    }
+
+                }
+            );
 
     </script>
 

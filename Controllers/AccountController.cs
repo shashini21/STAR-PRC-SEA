@@ -75,5 +75,12 @@ namespace STAR_PRC_SEA.Controllers
                 "Index",
                 "Home");
         }
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return Ok();
+        }
     }
 }
