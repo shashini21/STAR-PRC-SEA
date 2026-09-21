@@ -1,33 +1,524 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
+    Layout = null;
 
     var userName = Context.Session.GetString("UserName");
     var logName = Context.Session.GetString("LogName");
-    var accessLevel = Context.Session.GetInt32("AccessLevel");
 }
 
-<div class="container mt-5">
+<!DOCTYPE html>
 
-    <h1>Dashboard</h1>
+<html lang="en">
 
-    <div class="alert alert-success">
+<head>
 
-        <h4>Login Successful</h4>
+    <meta charset="utf-8" />
 
-        <p>
-            Welcome, <strong>@userName</strong>
-        </p>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
 
-        <p>
-            Login Name:
-            <strong>@logName</strong>
-        </p>
+    <title>
+        Pre-Costing System - Dashboard
+    </title>
 
-        <p>
-            Access Level:
-            <strong>@accessLevel</strong>
-        </p>
+    <link rel="stylesheet"
+          href="~/css/dashboard.css"
+          asp-append-version="true" />
+
+</head>
+
+
+<body>
+
+    <div class="dashboard-container">
+
+
+        <aside class="sidebar">
+
+
+            <!-- LOGO / SYSTEM NAME -->
+
+            <div class="sidebar-header">
+
+                <div class="star-logo">
+                    STAR
+                </div>
+
+                <div class="system-name">
+
+                    <span>
+                        PRE COSTING
+                    </span>
+
+                    <small>
+                        SYSTEM
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <nav class="sidebar-menu">
+
+
+                <!-- DASHBOARD -->
+
+                <a href="@Url.Action("Index", "Home")"
+                   class="menu-item dashboard-link">
+
+                    <span class="menu-icon">⌂</span>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <div class="menu-section">
+
+                    <button class="menu-item menu-toggle"
+                            onclick="toggleMenu('masterMenu', this)">
+
+                        <span class="menu-icon">▣</span>
+
+                        <span>Master Files</span>
+
+                        <span class="arrow">›</span>
+
+                    </button>
+
+
+                    <div id="masterMenu"
+                         class="submenu">
+
+                        <a href="#">
+                            Freight Charges
+                        </a>
+
+                        <a href="#">
+                            Reference and Controls
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+             
+
+                <div class="menu-section">
+
+                    <button class="menu-item menu-toggle"
+                            onclick="toggleMenu('transactionMenu', this)">
+
+                        <span class="menu-icon">▤</span>
+
+                        <span>Transaction Files</span>
+
+                        <span class="arrow">›</span>
+
+                    </button>
+
+
+                    <div id="transactionMenu"
+                         class="submenu">
+
+                        <a href="#">
+                            KOMAR - LDP
+                        </a>
+
+                        <a href="#">
+                            KOMAR - FOB
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                
+
+                <div class="menu-section">
+
+                    <button class="menu-item menu-toggle"
+                            onclick="toggleMenu('reportsMenu', this)">
+
+                        <span class="menu-icon">▤</span>
+
+                        <span>Reports</span>
+
+                        <span class="arrow">›</span>
+
+                    </button>
+
+
+                    <div id="reportsMenu"
+                         class="submenu">
+
+                        <a href="#">
+                            Costing Details
+                        </a>
+
+                        <a href="#">
+                            Signed Costings
+                        </a>
+
+                        <a href="#">
+                            Costing Confirm Details
+                        </a>
+
+                        <a href="#">
+                            OPS Not Matched Styles
+                        </a>
+
+                        <a href="#">
+                            Sign Costing Vs Prices Descr
+                        </a>
+
+                        <a href="#">
+                            Dev Vs Final Costing Report
+                        </a>
+
+                        <a href="#">
+                            Pending Lots To Match
+                        </a>
+
+                        <a href="#">
+                            Category Descripancy Report
+                        </a>
+
+                        <a href="#">
+                            Gross Margin Projection Report
+                        </a>
+
+                        <a href="#">
+                            Trims - Other Listing
+                        </a>
+
+                        <a href="#">
+                            Link Pricing Exception Report
+                        </a>
+
+                        <a href="#">
+                            Price Listing - Color Wise
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="menu-section">
+
+                    <button class="menu-item menu-toggle"
+                            onclick="toggleMenu('proceduresMenu', this)">
+
+                        <span class="menu-icon">⚙</span>
+
+                        <span>Procedures</span>
+
+                        <span class="arrow">›</span>
+
+                    </button>
+
+
+                    <div id="proceduresMenu"
+                         class="submenu">
+
+                        <a href="#">
+                            Re-Indexing Data Files
+                        </a>
+
+                        <a href="#">
+                            Password Maintenance
+                        </a>
+
+                        <a href="#">
+                            Assign User Access Level
+                        </a>
+
+                        <a href="#">
+                            System Menu
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+             
+
+                <a href="@Url.Action("Logout", "Account")"
+                   class="menu-item exit-item">
+
+                    <span class="menu-icon">↪</span>
+
+                    <span>Exit</span>
+
+                </a>
+
+
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+
+            <div class="sidebar-footer">
+
+                <span>
+                    © @DateTime.Now.Year STAR
+                </span>
+
+                <small>
+                    Pre-Costing System
+                </small>
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+             ========================================= -->
+
+        <main class="main-content">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h2>
+                        Dashboard
+                    </h2>
+
+                    <p>
+                        Pre-Costing Management System
+                    </p>
+
+                </div>
+
+
+                <!-- USER -->
+
+                <div class="user-area">
+
+                    <div class="user-avatar">
+                        @(string.IsNullOrEmpty(userName)
+                            ? "U"
+                            : userName.Substring(0, 1).ToUpper())
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            @(string.IsNullOrEmpty(userName)
+                                ? logName
+                                : userName)
+                        </strong>
+
+                        <span>
+                            @logName
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 DASHBOARD CONTENT
+                 ===================================== -->
+
+            <section class="dashboard-content">
+
+
+                <div class="welcome-card">
+
+                    <div>
+
+                        <span class="welcome-label">
+                            WELCOME
+                        </span>
+
+                        <h1>
+                            Pre-Costing System
+                        </h1>
+
+                        <p>
+                            Manage costing, transactions,
+                            reports and system procedures
+                            from one place.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK ACCESS -->
+
+                <h3 class="section-title">
+                    Quick Access
+                </h3>
+
+
+                <div class="quick-cards">
+
+
+                    <a href="#"
+                       class="quick-card">
+
+                        <div class="quick-icon">
+                            ▣
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Master Files
+                            </strong>
+
+                            <span>
+                                Manage reference data
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-card">
+
+                        <div class="quick-icon">
+                            ▤
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Transactions
+                            </strong>
+
+                            <span>
+                                Manage costing transactions
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-card">
+
+                        <div class="quick-icon">
+                            ◫
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Reports
+                            </strong>
+
+                            <span>
+                                View costing reports
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-card">
+
+                        <div class="quick-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Procedures
+                            </strong>
+
+                            <span>
+                                System maintenance
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
 
     </div>
 
-</div>
+
+    <script>
+
+            function toggleMenu(menuId, button) {
+
+                const menu =
+                    document.getElementById(menuId);
+
+                const isOpen =
+                    menu.classList.contains("open");
+
+
+                // Close all menus
+
+                document
+                    .querySelectorAll(".submenu")
+                    .forEach(function(item) {
+
+                        item.classList.remove("open");
+
+                    });
+
+
+                document
+                    .querySelectorAll(".menu-toggle")
+                    .forEach(function(item) {
+
+                        item.classList.remove("active");
+
+                    });
+
+
+                // Open selected menu
+
+                if (!isOpen) {
+
+                    menu.classList.add("open");
+
+                    button.classList.add("active");
+
+                }
+
+            }
+
+    </script>
+
+</body>
+
+</html>
