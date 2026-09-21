@@ -1,0 +1,150 @@
+﻿@model STAR_PRC_SEA.Models.Login.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Pre-Costing System - Login</title>
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+</head>
+
+<body>
+
+    <div class="login-page">
+
+        <div class="login-card">
+
+            <!-- LOGIN HEADER -->
+
+            <div class="login-header">
+
+                <h1>Pre-Costing System</h1>
+
+                <p>User Login</p>
+
+            </div>
+
+
+            <!-- LOGIN BODY -->
+
+            <div class="login-body">
+
+                <form asp-controller="Account"
+                      asp-action="Login"
+                      method="post"
+                      id="loginForm">
+
+                    @Html.AntiForgeryToken()
+
+
+                    <!-- ERROR MESSAGE -->
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="login-error">
+                    </div>
+
+
+                    <!-- LOGIN NAME -->
+
+                    <div class="input-group">
+
+                        <label asp-for="LogName">
+                            Login Name
+                        </label>
+
+                        <input asp-for="LogName"
+                               id="loginName"
+                               class="login-input"
+                               autocomplete="off"
+                               placeholder="Enter login name"
+                               oninput="this.value = this.value.toUpperCase();"
+                               onkeydown="moveToPassword(event);" />
+
+                        <span asp-validation-for="LogName"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-group">
+
+                        <label asp-for="Password">
+                            Password
+                        </label>
+
+                        <input asp-for="Password"
+                               id="password"
+                               class="login-input"
+                               type="password"
+                               autocomplete="new-password"
+                               placeholder="Enter password" />
+
+                        <span asp-validation-for="Password"
+                              class="validation-message">
+                        </span>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button type="submit"
+                            class="login-button">
+
+                        <span>Login</span>
+
+                        <span class="login-arrow">→</span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ENTER KEY -->
+
+    <script>
+
+            function moveToPassword(event) {
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    document.getElementById("password").focus();
+
+                }
+
+            }
+
+    </script>
+
+
+    <partial name="_ValidationScriptsPartial" />
+
+</body>
+
+</html>
