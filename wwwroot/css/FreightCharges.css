@@ -1,0 +1,826 @@
+﻿
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #172b4d;
+    background: #f4f7fb;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page-container {
+    min-height: 100vh;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: radial-gradient( circle at top right, rgba(35, 105, 155, 0.09), transparent 35% ), radial-gradient( circle at bottom left, rgba(35, 105, 155, 0.05), transparent 30% ), #f4f7fb;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.freight-card {
+    width: 1180px;
+    max-width: 100%;
+    background: #ffffff;
+    border: 1px solid #e3eaf1;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 20px 55px rgba(25, 53, 78, 0.12);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.page-header {
+    min-height: 112px;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient( 135deg, #173b5b 0%, #215f87 100% );
+    color: #ffffff;
+}
+
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.header-icon {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 25px;
+}
+
+
+.header-text .breadcrumb {
+    margin-bottom: 4px;
+    color: rgba(255,255,255,0.62);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+}
+
+
+.header-text h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+
+.header-text p {
+    margin: 5px 0 0;
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   HEADER CLOSE
+   ========================================================= */
+
+.header-close {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.10);
+    color: #ffffff;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+
+    .header-close:hover {
+        background: rgba(255,255,255,0.20);
+        transform: scale(1.05);
+    }
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content-area {
+    padding: 30px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+
+.section-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #eaf4fb;
+    color: #1d6d9f;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.section-heading h2 {
+    margin: 0;
+    color: #173b5b;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.section-heading p {
+    margin: 4px 0 0;
+    color: #8796a5;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ACCOUNT CARD
+   ========================================================= */
+
+.account-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 22px;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9f0;
+    border-radius: 12px;
+    background: linear-gradient( 135deg, #f9fbfd, #f5f8fb );
+}
+
+
+/* =========================================================
+   ACCOUNT LABEL
+   ========================================================= */
+
+.account-label {
+    min-width: 145px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+    .account-label label {
+        color: #344b62;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+    .account-label span {
+        color: #a0acb8;
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+
+/* =========================================================
+   ACCOUNT INPUT
+   ========================================================= */
+
+.account-input-wrapper {
+    position: relative;
+    width: 340px;
+}
+
+
+.account-input {
+    width: 100%;
+    height: 46px;
+    padding: 0 48px 0 14px;
+    border: 1px solid #d2dce6;
+    border-radius: 8px;
+    outline: none;
+    background: #ffffff;
+    color: #263f56;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+
+    .account-input::placeholder {
+        color: #a5b1bd;
+        font-weight: 400;
+    }
+
+
+    .account-input:hover {
+        border-color: #b7c5d2;
+    }
+
+
+    .account-input:focus {
+        border-color: #287cac;
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(40,124,172,0.10);
+    }
+
+
+/* Account symbol */
+
+.account-symbol {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #edf3f7;
+    color: #71869a;
+    font-size: 12px;
+    font-weight: 700;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLE HEADING
+   ========================================================= */
+
+.table-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+
+    .table-heading h2 {
+        margin: 0;
+        color: #173b5b;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+
+    .table-heading p {
+        margin: 4px 0 0;
+        color: #8796a5;
+        font-size: 12px;
+    }
+
+
+/* =========================================================
+   ROW INDICATOR
+   ========================================================= */
+
+.row-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px;
+    border-radius: 20px;
+    background: #f1f6f9;
+    color: #74899c;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.indicator-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #52a36a;
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+   ========================================================= */
+
+.table-container {
+    width: 100%;
+    max-height: 430px;
+    overflow: auto;
+    border: 1px solid #dfe7ee;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.freight-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+
+    /* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+    .freight-table th {
+        height: 58px;
+        padding: 8px 15px;
+        background: #f4f7fa;
+        color: #50677c;
+        border-bottom: 1px solid #dce5ed;
+        text-align: left;
+        font-size: 12px;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
+
+
+        .freight-table th:not(:first-child) {
+            text-align: right;
+        }
+
+
+        .freight-table th:first-child {
+            padding-left: 20px;
+            border-top-left-radius: 12px;
+        }
+
+
+        .freight-table th:last-child {
+            border-top-right-radius: 12px;
+        }
+
+
+        /* Small text under column title */
+
+        .freight-table th small {
+            display: block;
+            margin-top: 3px;
+            color: #9ba9b6;
+            font-size: 9px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+
+/* =========================================================
+   COLUMN WIDTH
+   ========================================================= */
+
+.category-column {
+    width: 30%;
+}
+
+
+.freight-table th:not(.category-column) {
+    width: 17.5%;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.freight-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+
+    .freight-table tbody tr:hover {
+        background: #f8fbfd;
+    }
+
+
+.freight-table td {
+    height: 54px;
+    padding: 5px 12px;
+    background: #ffffff;
+    border-bottom: 1px solid #edf1f5;
+}
+
+
+.freight-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+.category-cell {
+    padding-left: 15px !important;
+}
+
+
+/* =========================================================
+   CATEGORY INPUT
+   ========================================================= */
+
+.category-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 11px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    outline: none;
+    background: transparent;
+    color: #34495e;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    .category-input::placeholder {
+        color: #b5c0ca;
+        font-size: 12px;
+    }
+
+
+    .category-input:hover {
+        background: #f8fafc;
+        border-color: #e1e7ed;
+    }
+
+
+    .category-input:focus {
+        background: #ffffff;
+        border-color: #287cac;
+        box-shadow: 0 0 0 3px rgba(40,124,172,0.08);
+    }
+
+
+/* =========================================================
+   RATE INPUT
+   ========================================================= */
+
+.rate-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 11px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    outline: none;
+    background: transparent;
+    color: #34495e;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    text-align: right;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    .rate-input::placeholder {
+        color: #b5c0ca;
+        font-size: 12px;
+    }
+
+
+    .rate-input:hover {
+        background: #f8fafc;
+        border-color: #e1e7ed;
+    }
+
+
+    .rate-input:focus {
+        background: #ffffff;
+        border-color: #287cac;
+        box-shadow: 0 0 0 3px rgba(40,124,172,0.08);
+    }
+
+
+    /* Remove number arrows */
+
+    .rate-input::-webkit-outer-spin-button,
+    .rate-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+
+    .rate-input[type="number"] {
+        appearance: textfield;
+    }
+
+
+/* =========================================================
+   TABLE SCROLLBAR
+   ========================================================= */
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+
+.table-container::-webkit-scrollbar-track {
+    background: #f5f7f9;
+}
+
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #c3ced9;
+    border-radius: 10px;
+}
+
+
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: #9daebb;
+    }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.form-footer {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid #e8edf2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+/* =========================================================
+   FOOTER MESSAGE
+   ========================================================= */
+
+.footer-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8796a6;
+    font-size: 11px;
+}
+
+
+.info-circle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eef3f7;
+    color: #71859a;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BUTTON AREA
+   ========================================================= */
+
+.footer-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.cancel-button {
+    height: 43px;
+    padding: 0 22px;
+    border: 1px solid #d5dfe8;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #61758a;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+
+    .cancel-button:hover {
+        background: #f5f8fa;
+        border-color: #c3ced8;
+        transform: translateY(-1px);
+    }
+
+
+    .cancel-button:active {
+        transform: translateY(0);
+    }
+
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.save-button {
+    min-width: 150px;
+    height: 43px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient( 135deg, #1d78aa, #15577f );
+    color: #ffffff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 14px rgba(24,101,148,0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    .save-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(24,101,148,0.25);
+    }
+
+
+    .save-button:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(24,101,148,0.18);
+    }
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid rgba(40,124,172,0.35);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .page-container {
+        padding: 15px;
+    }
+
+
+    .content-area {
+        padding: 20px;
+    }
+
+
+    .account-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+
+    .account-label {
+        min-width: auto;
+    }
+
+
+    .account-input-wrapper {
+        width: 100%;
+    }
+
+
+    .table-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+
+    .form-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .footer-buttons {
+        justify-content: flex-end;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .page-container {
+        padding: 10px;
+    }
+
+
+    .page-header {
+        min-height: 90px;
+        padding: 20px;
+    }
+
+
+    .header-content {
+        gap: 12px;
+    }
+
+
+    .header-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        font-size: 21px;
+    }
+
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+
+    .header-text p {
+        display: none;
+    }
+
+
+    .content-area {
+        padding: 16px;
+    }
+
+
+    .account-card {
+        padding: 16px;
+    }
+
+
+    .account-input {
+        height: 44px;
+    }
+
+
+    .table-container {
+        border-radius: 9px;
+    }
+
+
+    .footer-buttons {
+        flex-direction: column;
+    }
+
+
+    .cancel-button,
+    .save-button {
+        width: 100%;
+    }
+}

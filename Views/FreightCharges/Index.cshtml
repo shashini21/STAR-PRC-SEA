@@ -1,0 +1,492 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Freight Charges</title>
+
+    <link rel="stylesheet"
+          href="/css/freightCharges.css?v=3" />
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="freight-card">
+
+            <!-- ============================================
+                 HEADER
+                 ============================================ -->
+
+            <div class="page-header">
+
+                <div class="header-content">
+
+                    <div class="header-icon">
+                        🚚
+                    </div>
+
+                    <div class="header-text">
+
+                        <div class="breadcrumb">
+                            MASTER FILES
+                        </div>
+
+                        <h1>
+                            Freight Charges
+                        </h1>
+
+                        <p>
+                            Manage freight rates and transportation charges
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <button type="button"
+                        class="header-close"
+                        onclick="closeFreightCharges()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- ============================================
+                 MAIN CONTENT
+                 ============================================ -->
+
+            <div class="content-area">
+
+
+                <!-- ========================================
+                     ACCOUNT INFORMATION
+                     ======================================== -->
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        #
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Account Information
+                        </h2>
+
+                        <p>
+                            Enter the account number to manage its freight charges.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="account-card">
+
+                    <div class="account-label">
+
+                        <label for="accountNumber">
+                            Account Number
+                        </label>
+
+                        <span>
+                            Required
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-input-wrapper">
+
+                        <input type="text"
+                               id="accountNumber"
+                               name="accountNumber"
+                               class="account-input"
+                               placeholder="Enter account number"
+                               autocomplete="off" />
+
+                        <span class="account-symbol">
+                            #
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================
+                     FREIGHT RATE SECTION
+                     ======================================== -->
+
+                <div class="table-heading">
+
+                    <div>
+
+                        <h2>
+                            Freight Rate Configuration
+                        </h2>
+
+                        <p>
+                            Enter the applicable rates for each freight category.
+                        </p>
+
+                    </div>
+
+                    <div class="row-indicator">
+
+                        <span class="indicator-dot"></span>
+
+                        <span>
+                            10 rows
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ========================================
+                     TABLE
+                     ======================================== -->
+
+                <div class="table-container">
+
+                    <table class="freight-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th class="category-column">
+                                    Category
+                                </th>
+
+                                <th>
+                                    Air
+                                    <small>Rate</small>
+                                </th>
+
+                                <th>
+                                    Vessel
+                                    <small>Rate</small>
+                                </th>
+
+                                <th>
+                                    Fixed Trims
+                                    <small>Rate</small>
+                                </th>
+
+                                <th>
+                                    Kg Rate
+                                    <small>Per KG</small>
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <!-- ROW 1 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+
+                                </td>
+
+                                <td>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="rate-input"
+                                           placeholder="0.00" />
+                                </td>
+
+                                <td>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="rate-input"
+                                           placeholder="0.00" />
+                                </td>
+
+                                <td>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="rate-input"
+                                           placeholder="0.00" />
+                                </td>
+
+                                <td>
+                                    <input type="number"
+                                           step="0.01"
+                                           class="rate-input"
+                                           placeholder="0.00" />
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ROW 2 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 3 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 4 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 5 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 6 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 7 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 8 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 9 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+
+                            <!-- ROW 10 -->
+
+                            <tr>
+
+                                <td class="category-cell">
+                                    <input type="text"
+                                           class="category-input"
+                                           placeholder="Enter category" />
+                                </td>
+
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+                                <td><input type="number" step="0.01" class="rate-input" placeholder="0.00" /></td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- ========================================
+                     FOOTER
+                     ======================================== -->
+
+                <div class="form-footer">
+
+                    <div class="footer-message">
+
+                        <span class="info-circle">
+                            i
+                        </span>
+
+                        <span>
+                            Enter the required rates and save your changes.
+                        </span>
+
+                    </div>
+
+
+                    <div class="footer-buttons">
+
+                        <button type="button"
+                                class="cancel-button"
+                                onclick="closeFreightCharges()">
+
+                            Cancel
+
+                        </button>
+
+
+                        <button type="button"
+                                class="save-button"
+                                onclick="saveFreightCharges()">
+
+                            <span>
+                                ✓
+                            </span>
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+            function saveFreightCharges() {
+
+                alert(
+                    "Save functionality will be connected to SQL Server later."
+                );
+
+            }
+
+
+            function closeFreightCharges() {
+
+                window.location.href = "/Home/Index";
+
+            }
+
+    </script>
+
+</body>
+
+</html>

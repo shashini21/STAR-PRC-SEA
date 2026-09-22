@@ -9,6 +9,19 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Freight Charges</title>
+
+    <link rel="stylesheet"
+          href="/css/freightCharges.css?v=5" />
+
+</head>
 
 <head>
 
@@ -155,13 +168,17 @@
                     <div id="masterMenu"
                          class="submenu">
 
-                        <a href="#">
+                        <a asp-controller="FreightCharges"
+                           asp-action="Index"
+                           class="submenu-item">
                             Freight Charges
                         </a>
 
-                        <a href="#">
-                            Reference and Controls
-                        </a>
+                        <a asp-controller="ReferencesControls"
+                           asp-action="Index"
+                           class="submenu-item">
+                            References & Controls
+                        </a>>
 
                     </div>
 
@@ -187,12 +204,12 @@
                     <div id="transactionMenu"
                          class="submenu">
 
-                        <a href="#">
-                            KOMAR - LDP
+                        <a href="/KomarLdp/Index" class="submenu-item">
+                            <span>KOMAR-LDP</span>
                         </a>
 
-                        <a href="#">
-                            KOMAR - FOB
+                        <a href="/KomarFob/Index" class="submenu-item">
+                            <span>KOMAR-FOB</span>
                         </a>
 
                     </div>

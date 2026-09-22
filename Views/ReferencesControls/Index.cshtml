@@ -1,0 +1,764 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>References & Controls</title>
+
+    <link rel="stylesheet"
+          href="/css/references-controls.css?v=1" />
+
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <div class="reference-card">
+
+
+            <!-- =====================================================
+                 HEADER
+                 ===================================================== -->
+
+            <div class="page-header">
+
+                <div class="header-content">
+
+                    <div class="header-icon">
+                        ⚙
+                    </div>
+
+                    <div class="header-text">
+
+                        <div class="breadcrumb">
+                            MASTER FILES
+                        </div>
+
+                        <h1>
+                            References & Controls
+                        </h1>
+
+                        <p>
+                            Configure costing references and calculation controls
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button type="button"
+                        class="header-close"
+                        onclick="closeForm()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 CONTENT
+                 ===================================================== -->
+
+            <div class="content-area">
+
+
+                <!-- =================================================
+                     ACCOUNT INFORMATION
+                     ================================================= -->
+
+                <div class="account-section">
+
+                    <div class="account-label">
+
+                        <label for="accountNumber">
+                            Account Number
+                        </label>
+
+                        <span>
+                            Required
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-input-wrapper">
+
+                        <input type="text"
+                               id="accountNumber"
+                               name="accountNumber"
+                               class="account-input"
+                               placeholder="Enter account number"
+                               autocomplete="off" />
+
+                        <span class="account-symbol">
+                            #
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     TWO COLUMN LAYOUT
+                     ================================================= -->
+
+                <div class="controls-grid">
+
+
+                    <!-- =================================================
+                         LEFT COLUMN
+                         ================================================= -->
+
+                    <div class="left-column">
+
+
+                        <!-- =============================================
+                             TRUCK HANDLING
+                             ============================================= -->
+
+                        <div class="control-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    🚛
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Truck Handling Charges
+                                    </h2>
+
+                                    <p>
+                                        Configure handling charges for air and boat shipments.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="field-list">
+
+                                <div class="field-row">
+
+                                    <label for="truckAir">
+                                        Truck Handling CHG AIR
+                                    </label>
+
+                                    <input type="number"
+                                           id="truckAir"
+                                           class="value-input"
+                                           step="0.0001"
+                                           placeholder="0.0000" />
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="truckBoat">
+                                        Truck Handling CHG BOAT
+                                    </label>
+
+                                    <input type="number"
+                                           id="truckBoat"
+                                           class="value-input"
+                                           step="0.0001"
+                                           placeholder="0.0000" />
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =============================================
+                             POLY BAG
+                             ============================================= -->
+
+                        <div class="control-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    🛍
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Poly Bag Calculations
+                                    </h2>
+
+                                    <p>
+                                        Enable automatic poly bag calculations.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkbox-list">
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Poly Bag For AIR
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="polyAir" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Poly Bag For BOAT
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="polyBoat" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Poly Bag For FTY
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="polyFty" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =============================================
+                             FIXED TRIMS LDP
+                             ============================================= -->
+
+                        <div class="control-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    ✦
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Fixed Trims — LDP
+                                    </h2>
+
+                                    <p>
+                                        Enable fixed trims calculations for LDP.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkbox-list">
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Fixed Trims For LDP - AIR
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="ldpAir" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Fixed Trims For LDP - BOAT
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="ldpBoat" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Fixed Trims For LDP - FTY
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="ldpFty" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =============================================
+                             FIXED TRIMS AIR / BOAT FOB
+                             ============================================= -->
+
+                        <div class="control-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    ✦
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Fixed Trims — FOB
+                                    </h2>
+
+                                    <p>
+                                        Configure fixed trims calculations for FOB.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="checkbox-list">
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Fixed Trims For AIR - FOB
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="fobAir" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                                <label class="checkbox-row">
+
+                                    <span>
+                                        Calculate Fixed Trims For BOAT - FOB
+                                    </span>
+
+                                    <input type="checkbox"
+                                           id="fobBoat" />
+
+                                    <span class="custom-checkbox"></span>
+
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RIGHT COLUMN
+                         ================================================= -->
+
+                    <div class="right-column">
+
+
+                        <!-- =============================================
+                             FABRIC / LINING PRICES
+                             ============================================= -->
+
+                        <div class="control-card pricing-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    %
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Fabric & Lining Prices
+                                    </h2>
+
+                                    <p>
+                                        Configure applicable pricing percentages.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="field-list">
+
+
+                                <div class="field-row">
+
+                                    <label for="fabricAir">
+                                        Fabric Price % For AIR
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="fabricAir"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="fabricBoat">
+                                        Fabric Price % For BOAT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="fabricBoat"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="fabricFob">
+                                        Fabric Price % For FOB BT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="fabricFob"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="liningAir">
+                                        Lining Price % For AIR
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="liningAir"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="liningBoat">
+                                        Lining Price % For BOAT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="liningBoat"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="liningFob">
+                                        Lining Price % For FOB BT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="liningFob"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="ribAir">
+                                        Rib Fabric Price % For AIR
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="ribAir"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="ribBoat">
+                                        Rib Fabric Price % For BOAT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="ribBoat"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="field-row">
+
+                                    <label for="ribFob">
+                                        Rib Fabric Price % For FOB BT
+                                    </label>
+
+                                    <div class="percentage-input">
+
+                                        <input type="number"
+                                               id="ribFob"
+                                               class="value-input"
+                                               step="0.01"
+                                               placeholder="0.00" />
+
+                                        <span>%</span>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =============================================
+                             NON DUTIABLE
+                             ============================================= -->
+
+                        <div class="control-card non-dutiable-card">
+
+                            <div class="card-header">
+
+                                <div class="card-icon">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Non-Dutiable
+                                    </h2>
+
+                                    <p>
+                                        Enable non-dutiable calculation.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <label class="checkbox-row">
+
+                                <span>
+                                    Calculate Non Dutiable
+                                </span>
+
+                                <input type="checkbox"
+                                       id="nonDutiable" />
+
+                                <span class="custom-checkbox"></span>
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     FOOTER
+                     ================================================= -->
+
+                <div class="form-footer">
+
+                    <div class="footer-message">
+
+                        <span class="info-circle">
+                            i
+                        </span>
+
+                        <span>
+                            Configure the required controls and save your changes.
+                        </span>
+
+                    </div>
+
+
+                    <div class="footer-buttons">
+
+                        <button type="button"
+                                class="cancel-button"
+                                onclick="closeForm()">
+
+                            Cancel
+
+                        </button>
+
+
+                        <button type="button"
+                                class="save-button"
+                                onclick="saveControls()">
+
+                            <span>
+                                ✓
+                            </span>
+
+                            Save Changes
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+            function saveControls() {
+
+                alert(
+                    "Save functionality will be connected to SQL Server later."
+                );
+
+            }
+
+
+            function closeForm() {
+
+                window.location.href = "/Home/Index";
+
+            }
+
+    </script>
+
+</body>
+
+</html>
