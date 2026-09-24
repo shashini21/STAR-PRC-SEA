@@ -4,668 +4,1167 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>KOMAR FORMAT - FOB</title>
 
-    <link rel="stylesheet"
-          href="~/css/komar-fob.css" />
+    <link rel="stylesheet" href="~/css/komar-fob.css" />
 </head>
 
 <body>
 
-    <div class="page-container">
+    <div class="fob-app">
 
-        <div class="komar-card">
-
-            <!-- =========================================================
+        <!-- =========================================================
          HEADER
          ========================================================= -->
 
-            <div class="komar-header">
+        <header class="fob-header">
 
-                <div class="header-left">
+            <div class="header-left">
+                <div class="header-icon">K</div>
 
-                    <div class="header-icon">
-                        F
+                <div>
+                    <div class="header-title">
+                        KOMAR FORMAT - FOB
                     </div>
 
+                    <div class="header-subtitle">
+                        Factory FOB Costing Management
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-right">
+
+                <div class="style-reference">
+                    <span>STYLE</span>
+                    <strong id="headerStyleNo">—</strong>
+                </div>
+
+                <div class="revision-reference">
+                    <span>REV</span>
+                    <strong id="headerRevision">—</strong>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================================
+         STEP NAVIGATION
+         ========================================================= -->
+
+        <nav class="page-tabs">
+
+            <button type="button"
+                    class="page-tab active"
+                    data-page="1"
+                    onclick="showPage(1)">
+
+                <span class="tab-number">01</span>
+
+                <span>
+                    <strong>Style Details</strong>
+                    <small>Basic information</small>
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="page-tab"
+                    data-page="2"
+                    onclick="showPage(2)">
+
+                <span class="tab-number">02</span>
+
+                <span>
+                    <strong>FOB Costing</strong>
+                    <small>Factory costing</small>
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="page-tab"
+                    data-page="3"
+                    onclick="showPage(3)">
+
+                <span class="tab-number">03</span>
+
+                <span>
+                    <strong>FOB Cost & Profit</strong>
+                    <small>Profitability</small>
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="page-tab"
+                    data-page="4"
+                    onclick="showPage(4)">
+
+                <span class="tab-number">04</span>
+
+                <span>
+                    <strong>Basic Trims</strong>
+                    <small>Approval & documents</small>
+                </span>
+
+            </button>
+
+
+            <button type="button"
+                    class="page-tab"
+                    data-page="5"
+                    onclick="showPage(5)">
+
+                <span class="tab-number">05</span>
+
+                <span>
+                    <strong>Confirmation</strong>
+                    <small>Styles & lots</small>
+                </span>
+
+            </button>
+
+        </nav>
+
+
+        <!-- =========================================================
+         FORM BODY
+         ========================================================= -->
+
+        <main class="fob-content">
+
+
+            <!-- =====================================================
+             PAGE 1
+             ===================================================== -->
+
+            <section class="form-page active-page" id="page1">
+
+                <div class="page-heading">
+
                     <div>
+                        <span>STEP 01 OF 05</span>
 
-                        <div class="header-breadcrumb">
-                            TRANSACTION FILES
-                        </div>
-
-                        <h1>
-                            KOMAR FORMAT - FOB
-                        </h1>
+                        <h1>Style Details</h1>
 
                         <p>
-                            FOB Costing and Style Management
+                            Enter the main style, account and fabric information.
                         </p>
+                    </div>
+
+                    <div class="page-status">
+                        <span class="status-dot"></span>
+                        Ready
+                    </div>
+
+                </div>
+
+
+                <!-- STYLE IDENTIFICATION -->
+
+                <div class="section-card">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">01</div>
+
+                        <div>
+                            <h2>Style Identification</h2>
+                            <p>Style and costing reference information.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid four-columns">
+
+                        <div class="field">
+                            <label>Style No</label>
+
+                            <div class="input-with-button">
+
+                                <input id="styleNumber"
+                                       type="text"
+                                       autocomplete="off"
+                                       oninput="updateHeaderStyle()" />
+
+                                <button type="button"
+                                        onclick="openRevisionModal()"
+                                        title="Find revisions">
+
+                                    ⋯
+
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <div class="field">
+                            <label>Create Date</label>
+                            <input type="date" />
+                        </div>
+
+
+                        <div class="field">
+                            <label>Ref #</label>
+                            <input type="text" id="refNo" />
+                        </div>
+
+
+                        <div class="field">
+                            <label>Costing</label>
+
+                            <div class="costing-control">
+
+                                <select id="costingStatus">
+
+                                    <option>SIGNED</option>
+                                    <option>UNSIGNED</option>
+                                    <option>DRAFT</option>
+
+                                </select>
+
+                                <input type="text"
+                                       id="costingRevision"
+                                       value="00"
+                                       readonly />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid three-columns">
+
+                        <div class="field span-2">
+                            <label>Display Style</label>
+
+                            <input type="text"
+                                   id="displayStyle" />
+
+                        </div>
+
+
+                        <div class="field">
+                            <label>Account</label>
+
+                            <input type="text"
+                                   id="account"
+                                   placeholder="Account" />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid four-columns">
+
+                        <div class="field">
+                            <label>Fabric Group</label>
+                            <input type="text" />
+                        </div>
+
+                        <div class="field">
+                            <label>Country</label>
+                            <input type="text" value="SRI LANKA" />
+                        </div>
+
+                        <div class="field">
+                            <label>Category</label>
+                            <input type="text" />
+                        </div>
+
+                        <div class="field">
+                            <label>Season</label>
+                            <input type="text" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid four-columns">
+
+                        <div class="field">
+                            <label>Rev No</label>
+
+                            <input id="revisionNo"
+                                   type="text"
+                                   readonly />
+
+                        </div>
+
+                        <div class="field span-2">
+                            <label>Description</label>
+                            <input type="text" />
+                        </div>
+
+                        <div class="field">
+                            <label>Quote</label>
+                            <input type="number" step="0.0001" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid four-columns">
+
+                        <div class="field">
+                            <label>X'Fty Date</label>
+                            <input type="date" />
+                        </div>
+
+                        <div class="field">
+                            <label>Duty Rate</label>
+                            <input type="number" step="0.0001" />
+                        </div>
+
+                        <div class="field">
+                            <label>FTY Duty Rate</label>
+                            <input type="number" step="0.0001" />
+                        </div>
+
+                        <div class="field">
+                            <label>KG Rate</label>
+                            <input type="number" step="0.0001" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid four-columns">
+
+                        <div class="field">
+                            <label>Quote Rate</label>
+                            <input type="number" step="0.0001" />
+                        </div>
+
+                        <div class="field">
+                            <label>Gmts In Pack</label>
+                            <input type="number" />
+                        </div>
+
+                        <div class="field">
+                            <label>Brand / Label</label>
+                            <input type="text" />
+                        </div>
+
+                        <div class="field">
+                            <label>Color</label>
+                            <input type="text" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid three-columns">
+
+                        <div class="field">
+                            <label>Sizes</label>
+                            <input type="text" />
+                        </div>
+
+
+                        <div class="field">
+                            <label>Projected Units</label>
+                            <input type="number" />
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>Status</label>
+
+                            <div class="radio-group">
+
+                                <label class="radio-option">
+                                    <input type="radio"
+                                           name="styleStatus"
+                                           checked />
+                                    Active
+                                </label>
+
+                                <label class="radio-option">
+                                    <input type="radio"
+                                           name="styleStatus" />
+                                    Inactive
+                                </label>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <button type="button"
-                        class="header-close"
-                        onclick="closeForm()">
-                    ×
-                </button>
 
-            </div>
+                <!-- FABRIC DETAILS -->
 
+                <div class="section-card">
 
-            <!-- =========================================================
-         PAGE NAVIGATION
-         ========================================================= -->
+                    <div class="section-title">
 
-            <div class="page-navigation">
+                        <div class="section-icon">02</div>
 
-                <button type="button"
-                        class="page-tab active"
-                        onclick="showPage(1)">
+                        <div>
+                            <h2>Fabric Details</h2>
+                            <p>Fabric and pricing information for the style.</p>
+                        </div>
 
-                    <span class="page-number">01</span>
-
-                    <span>Style</span>
-
-                </button>
+                    </div>
 
 
-                <button type="button"
-                        class="page-tab"
-                        onclick="showPage(2)">
+                    <div class="table-container">
 
-                    <span class="page-number">02</span>
+                        <table class="data-table fabric-table">
 
-                    <span>Costing</span>
+                            <thead>
 
-                </button>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Type</th>
+                                    <th>Fabric</th>
+                                    <th>Customer Paid</th>
+                                    <th>Contract</th>
+                                    <th>Price</th>
+                                    <th>Fabric Content</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                @for (int i = 1; i <= 8; i++)
+                                {
+                                    <tr>
+
+                                        <td>@i</td>
+
+                                        <td>
+                                            <input type="text" />
+                                        </td>
+
+                                        <td class="check-cell">
+                                            <input type="checkbox" />
+                                        </td>
+
+                                        <td class="check-cell">
+                                            <input type="checkbox" />
+                                        </td>
+
+                                        <td>
+                                            <input type="text" />
+                                        </td>
+
+                                        <td>
+                                            <input type="number" step="0.0001" />
+                                        </td>
+
+                                        <td>
+                                            <input type="text" />
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
 
 
-                <button type="button"
-                        class="page-tab"
-                        onclick="showPage(3)">
+                    <div class="table-actions">
 
-                    <span class="page-number">03</span>
+                        <button type="button" class="secondary-button">
+                            + Add Line
+                        </button>
 
-                    <span>Profit</span>
+                        <button type="button" class="secondary-button danger-soft">
+                            − Delete Line
+                        </button>
 
-                </button>
+                    </div>
 
-
-                <button type="button"
-                        class="page-tab"
-                        onclick="showPage(4)">
-
-                    <span class="page-number">04</span>
-
-                    <span>Basic Trims</span>
-
-                </button>
+                </div>
 
 
-                <button type="button"
-                        class="page-tab"
-                        onclick="showPage(5)">
+                <!-- SKETCH -->
 
-                    <span class="page-number">05</span>
+                <div class="section-card sketch-section">
 
-                    <span>Confirmation</span>
+                    <div class="sketch-preview">
 
-                </button>
+                        <div class="sketch-placeholder">
 
-            </div>
+                            <div class="sketch-icon">✧</div>
+
+                            <span>Sketch Preview</span>
+
+                            <small>No sketch loaded</small>
+
+                        </div>
+
+                    </div>
 
 
-            <!-- =========================================================
-         PAGE CONTENT
-         ========================================================= -->
+                    <div class="sketch-controls">
 
-            <div class="page-content">
+                        <button type="button" class="secondary-button">
+                            Paste Sketch
+                        </button>
+
+                        <button type="button" class="secondary-button">
+                            Load Sketch
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
 
 
-                <!-- =====================================================
-             PAGE 1
+            <!-- =====================================================
+             PAGE 2 - FOB COSTING
              ===================================================== -->
 
-                <section class="form-page active-page"
-                         id="page1">
+            <section class="form-page" id="page2">
 
-                    <div class="page-title">
+                <div class="page-heading">
 
-                        <h2>
-                            Style Information
-                        </h2>
+                    <div>
+                        <span>STEP 02 OF 05</span>
+
+                        <h1>FOB Costing</h1>
 
                         <p>
-                            Enter the basic FOB style information and select
-                            the revision you want to modify.
+                            Manage piecegoods, account costing and factory costing.
                         </p>
-
                     </div>
 
+                    <div class="page-status">
+                        <span class="status-dot"></span>
+                        Costing
+                    </div>
 
-                    <!-- BASIC INFORMATION -->
+                </div>
 
-                    <div class="section-card">
 
-                        <div class="section-heading">
+                <div class="fob-costing-layout">
 
-                            <span class="section-icon">
-                                01
-                            </span>
+                    <!-- LEFT -->
 
-                            <div>
+                    <div class="costing-left">
 
-                                <h3>
-                                    Basic Information
-                                </h3>
 
-                                <p>
-                                    Style, account and revision information
-                                </p>
+                        <!-- ADDITIONAL -->
+
+                        <div class="section-card">
+
+                            <div class="section-title compact">
+
+                                <div class="section-icon">%</div>
+
+                                <div>
+                                    <h2>Additional %</h2>
+                                    <p>Additional costing percentages.</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="additional-values">
+
+                                <div class="mini-field">
+
+                                    <label>Additional Air</label>
+
+                                    <input type="number"
+                                           step="0.0001"
+                                           value="0.00" />
+
+                                </div>
+
+
+                                <div class="mini-field">
+
+                                    <label>Additional Vessel</label>
+
+                                    <input type="number"
+                                           step="0.0001"
+                                           value="0.00" />
+
+                                </div>
 
                             </div>
 
                         </div>
 
 
-                        <div class="form-grid">
+                        <!-- FACTORY COSTING TABLE -->
+
+                        <div class="section-card">
+
+                            <div class="section-title compact">
+
+                                <div class="section-icon">01</div>
+
+                                <div>
+                                    <h2>Factory Costing</h2>
+                                    <p>Piecegoods and factory costing details.</p>
+                                </div>
+
+                            </div>
 
 
-                            <!-- STYLE -->
+                            <div class="table-container costing-table-container">
 
-                            <div class="form-field">
+                                <table class="data-table costing-table">
 
-                                <label>
-                                    Style No
-                                </label>
+                                    <thead>
 
-                                <div class="input-with-button">
+                                        <tr>
 
-                                    <input type="text"
-                                           id="styleNumber"
-                                           placeholder="Enter style number" />
+                                            <th>No</th>
+                                            <th>Doz</th>
+                                            <th>Pcs</th>
 
-                                    <button type="button"
-                                            class="search-button"
-                                            onclick="openRevisionModal()">
+                                            <th class="highlight-header">
+                                                Acct Air
+                                            </th>
 
-                                        ⋯
+                                            <th class="highlight-header">
+                                                Acct Ves
+                                            </th>
 
-                                    </button>
+                                            <th>Fty YC</th>
+
+                                            <th>Fty Price</th>
+
+                                            <th class="highlight-header">
+                                                Fty Value
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        @for (int i = 1; i <= 8; i++)
+                                        {
+                                            <tr>
+
+                                                <td>@i</td>
+
+                                                <td>
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td class="highlight-cell">
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td class="highlight-cell">
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                                <td class="highlight-cell">
+                                                    <input type="number" step="0.0001" />
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MAIN COSTING -->
+
+                        <div class="section-card">
+
+                            <div class="section-title compact">
+
+                                <div class="section-icon">C</div>
+
+                                <div>
+                                    <h2>Main Costing</h2>
+                                    <p>Core cost components by account and factory value.</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="main-cost-grid">
+
+                                <div class="main-cost-header">
+
+                                    <div>Cost Component</div>
+                                    <div>Acct Air</div>
+                                    <div>Acct Ves</div>
+                                    <div>Fty Value</div>
+
+                                </div>
+
+
+                                @{
+                                    var costingRows = new[]
+                                    {
+                                    "Total Piecegoods Cost",
+                                    "Labour",
+                                    "Assist",
+                                    "ACCT Fixed Trims",
+                                    "Miscellaneous",
+                                    "Washing",
+                                    "Non Dutiable",
+                                    "Overhead",
+                                    "Trims"
+                                };
+                                }
+
+                                @foreach (var row in costingRows)
+                                {
+                                    <div class="main-cost-row">
+
+                                        <span>@row</span>
+
+                                        <input type="number"
+                                               step="0.0001" />
+
+                                        <input type="number"
+                                               step="0.0001" />
+
+                                        <input class="factory-value"
+                                               type="number"
+                                               step="0.0001" />
+
+                                    </div>
+                                }
+
+                            </div>
+
+
+                            <div class="cost-summary">
+
+                                <div class="summary-field">
+
+                                    <label>FOB Value XL</label>
+
+                                    <input type="number"
+                                           step="0.0001" />
+
+                                </div>
+
+
+                                <div class="summary-fields">
+
+                                    <label>Sub Totals</label>
+
+                                    <input type="number" />
+                                    <input type="number" />
+                                    <input type="number" />
+                                    <input type="number" />
 
                                 </div>
 
                             </div>
 
 
-                            <!-- CREATE DATE -->
+                            <div class="mini-cost-tables">
 
-                            <div class="form-field">
+                                <table>
 
-                                <label>
-                                    Create Date
-                                </label>
+                                    <thead>
+                                        <tr>
+                                            <th>Wash</th>
+                                            <th>EMB</th>
+                                            <th>Print</th>
+                                            <th>Quilting</th>
+                                            <th>Other</th>
+                                        </tr>
+                                    </thead>
 
-                                <input type="date"
-                                       id="createDate" />
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+
+                                <table>
+
+                                    <thead>
+                                        <tr>
+                                            <th>Wash Fall</th>
+                                            <th>Testing</th>
+                                            <th>Sample</th>
+                                            <th>Other</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT FACTORY PER DOZ -->
+
+                    <div class="factory-panel">
+
+                        <div class="section-card factory-card">
+
+                            <div class="section-title compact">
+
+                                <div class="section-icon">F</div>
+
+                                <div>
+                                    <h2>Factory Per Doz</h2>
+                                    <p>Factory-level costing values.</p>
+                                </div>
 
                             </div>
 
 
-                            <!-- REF -->
+                            <div class="factory-fields">
 
-                            <div class="form-field">
+                                <div class="factory-field">
+                                    <label>Fty SMV</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
 
-                                <label>
-                                    Ref #
-                                </label>
+                                <div class="factory-field">
+                                    <label>SMV W/Ded</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
 
-                                <input type="text"
-                                       id="refNo"
-                                       placeholder="Enter reference" />
+                                <div class="factory-field">
+                                    <label>Cost/Min</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
 
-                            </div>
+
+                                <div class="factory-divider"></div>
 
 
-                            <!-- COSTING -->
+                                <div class="factory-field">
+                                    <label>Neg Price</label>
+                                    <input class="yellow-input" type="number" step="0.0001" />
+                                </div>
 
-                            <div class="form-field">
+                                <div class="factory-field">
+                                    <label>Fixed Tr</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
 
-                                <label>
-                                    Costing
-                                </label>
+                                <div class="factory-field">
+                                    <label>Hanger</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
 
-                                <div class="costing-input">
 
-                                    <select id="costingStatus">
+                                <div class="factory-total">
+                                    <span>Total Neg</span>
+                                    <input class="yellow-input" type="number" step="0.0001" />
+                                </div>
 
-                                        <option value="">
-                                            Select
-                                        </option>
 
-                                        <option value="SIGNED">
-                                            SIGNED
-                                        </option>
+                                <div class="factory-divider"></div>
 
-                                        <option value="UNSIGNED">
-                                            UNSIGNED
-                                        </option>
 
+                                <div class="factory-field">
+                                    <label>Trims Per Pc</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Trims</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Less Hanger</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+
+                                <div class="factory-extra-row">
+
+                                    <select>
+                                        <option></option>
                                     </select>
 
-                                    <input type="text"
-                                           id="costingRevision"
-                                           value="00"
-                                           readonly />
+                                    <input type="text" />
 
+                                    <input type="number" />
+
+                                </div>
+
+
+                                <div class="factory-extra-row">
+
+                                    <select>
+                                        <option></option>
+                                    </select>
+
+                                    <input type="text" />
+
+                                    <input type="number" />
+
+                                </div>
+
+
+                                <div class="factory-field">
+                                    <label>Develop</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Non Quote</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+
+                                <div class="factory-total">
+
+                                    <span>Total Trims</span>
+
+                                    <input class="yellow-input"
+                                           type="number"
+                                           step="0.0001" />
+
+                                </div>
+
+
+                                <div class="factory-field">
+                                    <label>Laser Cut</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Pleating</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Smocking</label>
+                                    <input type="number" step="0.0001" />
+                                </div>
+
+                                <div class="factory-field">
+                                    <label>Bonding</label>
+                                    <input type="number" step="0.0001" />
                                 </div>
 
                             </div>
 
+                        </div>
 
-                            <!-- DISPLAY STYLE -->
+                    </div>
 
-                            <div class="form-field wide">
+                </div>
 
-                                <label>
-                                    Display Style
-                                </label>
-
-                                <input type="text"
-                                       id="displayStyle"
-                                       placeholder="Enter display style" />
-
-                            </div>
+            </section>
 
 
-                            <!-- ACCOUNT -->
+            <!-- =====================================================
+             PAGE 3
+             ===================================================== -->
 
-                            <div class="form-field">
+            <section class="form-page" id="page3">
 
-                                <label>
-                                    Account
-                                </label>
+                <div class="page-heading">
 
-                                <input type="text"
-                                       id="accountNo"
-                                       placeholder="Enter account number" />
+                    <div>
+                        <span>STEP 03 OF 05</span>
 
-                            </div>
+                        <h1>FOB Cost & Profit</h1>
 
+                        <p>
+                            Review FOB selling price and profitability.
+                        </p>
+                    </div>
 
-                            <!-- FABRIC GROUP -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Fabric Group
-                                </label>
-
-                                <input type="text"
-                                       id="fabricGroup"
-                                       placeholder="Fabric group" />
-
-                            </div>
+                </div>
 
 
-                            <!-- COUNTRY -->
+                <div class="profit-layout">
 
-                            <div class="form-field">
+                    <div class="section-card profit-main">
 
-                                <label>
-                                    Country
-                                </label>
+                        <div class="profit-header">
 
-                                <input type="text"
-                                       id="country"
-                                       value="SRI LANKA" />
+                            <div></div>
 
-                            </div>
+                            <div class="matrix-heading">AIR</div>
 
+                            <div class="matrix-heading">Vessel</div>
 
-                            <!-- CATEGORY -->
+                            <div class="matrix-heading">Act Fty</div>
 
-                            <div class="form-field">
+                            <div class="matrix-heading">FOB</div>
 
-                                <label>
-                                    Category
-                                </label>
-
-                                <input type="text"
-                                       id="category"
-                                       placeholder="Category" />
-
-                            </div>
+                        </div>
 
 
-                            <!-- SEASON -->
+                        @{
+                            var profitRows = new[]
+                            {
+                            "Sub Totals",
+                            "Acct Surchg Qty",
+                            "Acct Quota Chg",
+                            "Freight Warehouse",
+                            "Duty",
+                            "NDT Value Add Services"
+                        };
+                        }
 
-                            <div class="form-field">
+                        @foreach (var row in profitRows)
+                        {
+                            <div class="profit-row">
 
-                                <label>
-                                    Season
-                                </label>
+                                <span>@row</span>
 
-                                <input type="text"
-                                       id="season"
-                                       placeholder="Season" />
+                                <input type="number" />
+                                <input type="number" />
+                                <input type="number" />
+                                <input type="number" />
 
                             </div>
+                        }
 
 
-                            <!-- REVISION -->
+                        <div class="selling-price-row">
 
-                            <div class="form-field">
+                            <strong>FOB Selling Price</strong>
 
-                                <label>
-                                    Rev No
-                                </label>
+                            <input type="number" />
+                            <input type="number" />
+                            <input type="number" />
+                            <input type="number" />
 
-                                <input type="text"
-                                       id="revisionNo"
-                                       placeholder="Select revision"
-                                       readonly />
+                        </div>
 
-                            </div>
 
-
-                            <!-- DESCRIPTION -->
-
-                            <div class="form-field wide">
-
-                                <label>
-                                    Description
-                                </label>
-
-                                <input type="text"
-                                       id="description"
-                                       placeholder="Style description" />
-
-                            </div>
-
-
-                            <!-- QUOTE -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Quote
-                                </label>
-
-                                <input type="number"
-                                       step="0.0001"
-                                       placeholder="0.0000" />
-
-                            </div>
-
-
-                            <!-- X FACTORY -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    X'Fty Date
-                                </label>
-
-                                <input type="date" />
-
-                            </div>
-
-
-                            <!-- DUTY -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Duty Rate
-                                </label>
-
-                                <input type="number"
-                                       step="0.0001"
-                                       placeholder="0.0000" />
-
-                            </div>
-
-
-                            <!-- FTY DUTY -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    FTY Duty Rate
-                                </label>
-
-                                <input type="number"
-                                       step="0.0001"
-                                       placeholder="0.0000" />
-
-                            </div>
-
-
-                            <!-- KG RATE -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    KG Rate
-                                </label>
-
-                                <input type="number"
-                                       step="0.0001"
-                                       placeholder="0.0000" />
-
-                            </div>
-
-
-                            <!-- QUOTE RATE -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Quote Rate
-                                </label>
-
-                                <input type="number"
-                                       step="0.0001"
-                                       placeholder="0.0000" />
-
-                            </div>
-
-
-                            <!-- GMTS -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Gmts In Pack
-                                </label>
-
-                                <input type="number"
-                                       placeholder="0" />
-
-                            </div>
-
-
-                            <!-- BRAND -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Brand / Label
-                                </label>
-
-                                <input type="text"
-                                       placeholder="Brand / Label" />
-
-                            </div>
-
-
-                            <!-- COLOR -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Color
-                                </label>
-
-                                <input type="text"
-                                       placeholder="Color" />
-
-                            </div>
-
-
-                            <!-- SIZES -->
-
-                            <div class="form-field wide">
-
-                                <label>
-                                    Sizes
-                                </label>
-
-                                <input type="text"
-                                       placeholder="Sizes" />
-
-                            </div>
-
-
-                            <!-- PROJECTED -->
-
-                            <div class="form-field">
-
-                                <label>
-                                    Projected Units
-                                </label>
-
-                                <input type="number"
-                                       placeholder="0" />
-
-                            </div>
-
+                        <div class="profit-work-area">
                         </div>
 
                     </div>
 
 
-                    <!-- STATUS -->
+                    <div class="profit-side">
 
-                    <div class="section-card">
+                        <div class="section-card">
 
-                        <div class="status-section">
+                            <div class="profit-fields">
 
-                            <span class="status-label">
-                                Style Status
-                            </span>
+                                <div>
+                                    <label>Profit %</label>
+                                    <input type="number" />
+                                    <input type="number" />
+                                </div>
 
-                            <label class="radio-option">
+                                <div>
+                                    <label>P.P Minute</label>
+                                    <input type="number" />
+                                    <input type="number" />
+                                </div>
 
-                                <input type="radio"
-                                       name="styleStatus"
-                                       checked />
+                                <div>
+                                    <label>CFMD Date</label>
+                                    <input type="date" />
+                                </div>
 
-                                Active
+                                <div>
+                                    <label>Gross Profit</label>
+                                    <input type="number" />
+                                    <input type="number" />
+                                </div>
 
-                            </label>
-
-                            <label class="radio-option">
-
-                                <input type="radio"
-                                       name="styleStatus" />
-
-                                Inactive
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- FABRIC -->
-
-                    <div class="section-card">
-
-                        <div class="section-heading">
-
-                            <span class="section-icon">
-                                02
-                            </span>
-
-                            <div>
-
-                                <h3>
-                                    Fabric Details
-                                </h3>
-
-                                <p>
-                                    Fabric and customer payment information
-                                </p>
+                                <div>
+                                    <label>Profit Margin</label>
+                                    <input type="number" />
+                                    <input type="number" />
+                                </div>
 
                             </div>
 
                         </div>
 
 
-                        <div class="table-wrapper">
+                        <div class="section-card lots-card">
+
+                            <h3>LDP Lots</h3>
 
                             <table class="data-table">
 
                                 <thead>
-
                                     <tr>
-
-                                        <th>No</th>
-                                        <th>Type</th>
-                                        <th>Fabric</th>
-                                        <th>Customer Paid</th>
-                                        <th>Contract</th>
-                                        <th>Price</th>
-                                        <th>Fabric Content</th>
-
+                                        <th>Lots</th>
+                                        <th>Doz</th>
+                                        <th>Pcs</th>
+                                        <th>Tot Pcs</th>
                                     </tr>
-
                                 </thead>
 
                                 <tbody>
 
-                                    @for (int i = 1; i <= 8; i++)
+                                    @for (int i = 0; i < 6; i++)
                                     {
                                         <tr>
-
-                                            <td>@i</td>
-
-                                            <td>
-                                                <input type="text" />
-                                            </td>
-
-                                            <td>
-                                                <input type="text" />
-                                            </td>
-
-                                            <td class="center">
-                                                <input type="checkbox" />
-                                            </td>
-
-                                            <td>
-                                                <input type="text" />
-                                            </td>
-
-                                            <td>
-                                                <input type="number" />
-                                            </td>
-
-                                            <td>
-                                                <input type="text" />
-                                            </td>
-
+                                            <td><input type="text" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
                                         </tr>
                                     }
 
@@ -676,1381 +1175,389 @@
                         </div>
 
 
-                        <div class="table-actions">
+                        <div class="section-card lots-card">
 
-                            <button type="button"
-                                    class="secondary-button">
-                                + Add Line
-                            </button>
+                            <h3>FOB Lots</h3>
 
-                            <button type="button"
-                                    class="danger-button">
-                                − Delete Line
-                            </button>
+                            <table class="data-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Lots</th>
+                                        <th>Doz</th>
+                                        <th>Pcs</th>
+                                        <th>Tot Pcs</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @for (int i = 0; i < 6; i++)
+                                    {
+                                        <tr>
+                                            <td><input type="text" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                            <td><input type="number" /></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+
+                            </table>
 
                         </div>
 
                     </div>
 
+                </div>
 
-                    <!-- SKETCH -->
+            </section>
+
+
+            <!-- =====================================================
+             PAGE 4
+             ===================================================== -->
+
+            <section class="form-page" id="page4">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span>STEP 04 OF 05</span>
+
+                        <h1>Basic Trims</h1>
+
+                        <p>
+                            Manage trims, approvals and supporting documents.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="section-card">
+
+                    <div class="section-title">
+
+                        <div class="section-icon">04</div>
+
+                        <div>
+                            <h2>Basic Trims</h2>
+                            <p>Trim details associated with this costing.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container large-table">
+
+                        <table class="data-table trims-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Rec No</th>
+                                    <th>Novelty</th>
+                                    <th>Trim Code</th>
+                                    <th>Type</th>
+                                    <th>Trim Description</th>
+                                    <th>Qty Pcs</th>
+                                    <th>Unit Cost</th>
+                                    <th>Trim Unit</th>
+                                    <th>Trim Cost</th>
+                                    <th>Cost +</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    <tr>
+
+                                        <td>@i</td>
+
+                                        <td class="check-cell">
+                                            <input type="checkbox" />
+                                        </td>
+
+                                        <td><input type="text" /></td>
+
+                                        <td><input type="text" /></td>
+
+                                        <td><input type="text" /></td>
+
+                                        <td><input type="number" /></td>
+
+                                        <td><input type="number" step="0.0001" /></td>
+
+                                        <td><input type="text" /></td>
+
+                                        <td class="highlight-cell">
+                                            <input type="number" step="0.0001" />
+                                        </td>
+
+                                        <td class="highlight-cell">
+                                            <input type="number" step="0.0001" />
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="trim-total-row">
+
+                        <input type="number" />
+                        <input type="number" />
+                        <input type="number" />
+
+                    </div>
+
+                </div>
+
+
+                <div class="approval-layout">
 
                     <div class="section-card">
 
-                        <div class="section-heading">
+                        <div class="section-title compact">
 
-                            <span class="section-icon">
-                                03
-                            </span>
+                            <div class="section-icon">A</div>
 
                             <div>
-
-                                <h3>
-                                    Style Sketch
-                                </h3>
-
-                                <p>
-                                    Style sketch / image
-                                </p>
-
+                                <h2>Approval & Documents</h2>
+                                <p>Approval and supporting document information.</p>
                             </div>
 
                         </div>
 
 
-                        <div class="sketch-area">
+                        <div class="approval-grid">
 
-                            <div class="sketch-placeholder">
+                            <label class="checkbox-label">
 
-                                <div class="sketch-icon">
-                                    +
-                                </div>
-
-                                <strong>
-                                    No sketch uploaded
-                                </strong>
+                                <input type="checkbox" />
 
                                 <span>
-                                    Add a style sketch later
+                                    Cost Sheet Signed
                                 </span>
 
+                            </label>
+
+
+                            <div class="field">
+                                <label>Approved By</label>
+                                <input type="text" />
+                            </div>
+
+
+                            <div class="field">
+                                <label>Receive Date</label>
+                                <input type="date" />
                             </div>
 
                         </div>
 
 
-                        <div class="sketch-buttons">
+                        <div class="field">
 
-                            <button type="button"
-                                    class="secondary-button">
-                                Paste Sketch
+                            <label>Remarks</label>
+
+                            <textarea rows="3"></textarea>
+
+                        </div>
+
+
+                        <div class="document-buttons">
+
+                            <button type="button" class="secondary-button">
+                                📎 Attach File
                             </button>
 
-                            <button type="button"
-                                    class="secondary-button">
-                                Load Sketch
+                            <button type="button" class="secondary-button">
+                                View File
                             </button>
+
+                            <button type="button" class="secondary-button">
+                                Copy Trims
+                            </button>
+
+                            <button type="button" class="secondary-button">
+                                📎 Attach PO
+                            </button>
+
+                        </div>
+
+
+                        <div class="field merchandiser-field">
+
+                            <label>Merchandiser</label>
+
+                            <input type="text" />
 
                         </div>
 
                     </div>
 
-                </section>
+                </div>
+
+            </section>
 
 
-                <
-                    <!-- =========================================================
-     PAGE 2 - FOB COSTING
-     ========================================================= -->
+            <!-- =====================================================
+             PAGE 5
+             ===================================================== -->
 
-                    <section class="form-page" id="page2">
+            <section class="form-page" id="page5">
 
-                        <div class="page-title">
-                            <h2>FOB Costing</h2>
-                            <p>Factory costing, piecegoods, trims and additional FOB costing information.</p>
+                <div class="page-heading">
+
+                    <div>
+                        <span>STEP 05 OF 05</span>
+
+                        <h1>Confirmation & Styles</h1>
+
+                        <p>
+                            Review OPS styles, lots and confirmation details.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="confirmation-layout">
+
+
+                    <!-- OPS STYLES -->
+
+                    <div class="section-card ops-card">
+
+                        <div class="section-title compact">
+
+                            <div class="section-icon">01</div>
+
+                            <div>
+                                <h2>OPS Styles</h2>
+                                <p>Related OPS styles.</p>
+                            </div>
+
                         </div>
 
 
-                        <!-- =====================================================
-         MAIN COSTING AREA
-         ===================================================== -->
+                        <div class="table-container">
 
-                        <div class="fob-costing-layout">
+                            <table class="data-table">
 
-                            <!-- LEFT SIDE -->
-                            <div class="fob-costing-left">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>OPS Style</th>
+                                        <th>Ref No</th>
+                                    </tr>
+                                </thead>
 
-                                <!-- Additional % + Factory Costing Table -->
-                                <div class="foxpro-cost-table-card">
+                                <tbody>
 
-                                    <!-- Additional % -->
-                                    <div class="additional-percent-bar">
+                                    @for (int i = 1; i <= 12; i++)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td><input type="text" /></td>
+                                            <td><input type="text" /></td>
+                                        </tr>
+                                    }
 
-                                        <div class="additional-label">
-                                            Additional %
-                                        </div>
+                                </tbody>
 
-                                        <input type="text"
-                                               value="0.00"
-                                               class="small-cost-input" />
+                            </table>
 
-                                        <input type="text"
-                                               value="0.00"
-                                               class="small-cost-input" />
+                        </div>
 
-                                    </div>
+                    </div>
 
 
-                                    <!-- Factory Costing Table -->
-                                    <div class="costing-scroll-wrapper">
+                    <!-- RIGHT -->
 
-                                        <table class="foxpro-cost-table">
+                    <div class="confirmation-right">
 
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Doz</th>
-                                                    <th>Pcs</th>
-                                                    <th class="yellow-header">Acct Air</th>
-                                                    <th class="yellow-header">Acct Ves</th>
-                                                    <th>Fty YC</th>
-                                                    <th>Fty Price</th>
-                                                    <th class="yellow-header">Fty Value</th>
-                                                </tr>
-                                            </thead>
+                        <div class="section-card">
 
-                                            <tbody>
+                            <div class="field">
 
-                                                <tr class="active-cost-row">
+                                <label>
+                                    Reason To Change The Confirm Costing
+                                </label>
 
-                                                    <td>
-                                                        <input type="text" value="1" />
-                                                    </td>
-
-                                                    <td>
-                                                        <input type="text" value="0.0000" />
-                                                    </td>
-
-                                                    <td>
-                                                        <input type="text" value="0.1770" />
-                                                    </td>
-
-                                                    <td class="yellow-cell">
-                                                        <input type="text" value="1.5818" />
-                                                    </td>
-
-                                                    <td class="yellow-cell">
-                                                        <input type="text" value="1.5818" />
-                                                    </td>
-
-                                                    <td>
-                                                        <input type="text" value="0.1670" />
-                                                    </td>
-
-                                                    <td>
-                                                        <input type="text" value="8.8470" />
-                                                    </td>
-
-                                                    <td class="yellow-cell">
-                                                        <input type="text" value="1.4774" />
-                                                    </td>
-
-                                                </tr>
-
-
-                                                <!-- Empty Rows -->
-                                                @for (int i = 2; i <= 10; i++)
-                                                {
-                                                    <tr>
-
-                                                        <td>
-                                                            <input type="text" value="@i" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="yellow-cell">
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="yellow-cell">
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="yellow-cell">
-                                                            <input type="text" />
-                                                        </td>
-
-                                                    </tr>
-                                                }
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-
-                                    <!-- Main Costing Summary -->
-
-                                    <div class="main-costing-table">
-
-                                        <div class="main-costing-header">
-                                            <span></span>
-                                            <span>Acct Air</span>
-                                            <span>Acct Ves</span>
-                                            <span>Fty Value</span>
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Total Piecegoods Cost</strong>
-
-                                            <input type="text" value="1.5818" />
-
-                                            <input type="text" value="1.5818" />
-
-                                            <input type="text" value="1.4774" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Labour</strong>
-
-                                            <input type="text" value="2.0000" />
-
-                                            <input type="text" value="2.0000" />
-
-                                            <input type="text" value="1.4875" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Assist</strong>
-
-                                            <input type="text" value="0.1330" />
-
-                                            <input type="text" value="0.1330" />
-
-                                            <input type="text" value="0.1330" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>ACCT Fixed Trims</strong>
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Miscellaneous</strong>
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" value="0.0640" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Washing</strong>
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Non Dutiable</strong>
-
-                                            <input type="text" />
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Overhead</strong>
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" value="0.0000" />
-
-                                            <input type="text" />
-
-                                        </div>
-
-
-                                        <div class="main-costing-row">
-
-                                            <strong>Trims</strong>
-
-                                            <input type="text" value="0.20" />
-
-                                            <input type="text" value="0.20" />
-
-                                            <input type="text" value="0.1200" />
-
-                                        </div>
-
-
-                                        <!-- Sub Total -->
-
-                                        <div class="subtotal-row">
-
-                                            <strong>FOB Value XL</strong>
-
-                                            <input type="text" value="3.280" />
-
-                                            <span>Sub Totals</span>
-
-                                            <input type="text" value="3.91" />
-
-                                            <input type="text" value="3.91" />
-
-                                            <input type="text" value="3.28" />
-
-                                            <input type="text" value="3.28" />
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <!-- Bottom Cost Tables -->
-
-                                    <div class="bottom-cost-tables">
-
-                                        <!-- First table -->
-
-                                        <div class="mini-cost-table">
-
-                                            <table>
-
-                                                <thead>
-                                                    <tr>
-                                                        <th>Wash</th>
-                                                        <th>EMB</th>
-                                                        <th>Print</th>
-                                                        <th>Quilting</th>
-                                                        <th>Other</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input value="0.0000" /></td>
-                                                        <td><input value="0.0000" /></td>
-                                                        <td><input value="0.0000" /></td>
-                                                        <td><input value="0.0000" /></td>
-                                                        <td><input value="0.0000" /></td>
-                                                    </tr>
-                                                </tbody>
-
-                                            </table>
-
-                                        </div>
-
-
-                                        <!-- Second table -->
-
-                                        <div class="mini-cost-table">
-
-                                            <table>
-
-                                                <thead>
-                                                    <tr>
-                                                        <th>Wash Fall</th>
-                                                        <th>Testing</th>
-                                                        <th>Sample</th>
-                                                        <th>Other</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input value="0.0000" /></td>
-                                                        <td><input value="4.2000" /></td>
-                                                        <td><input value="4.2000" /></td>
-                                                        <td><input value="0.0000" /></td>
-                                                    </tr>
-                                                </tbody>
-
-                                            </table>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- =================================================
-             RIGHT SIDE
-             ================================================= -->
-
-                            <div class="fob-costing-right">
-
-
-                                <!-- Factory Per Doz -->
-
-                                <div class="foxpro-side-card">
-
-                                    <div class="foxpro-side-title">
-                                        Factory Per Doz
-                                    </div>
-
-
-                                    <div class="side-cost-row">
-                                        <label>Fty SMV</label>
-                                        <input type="text" />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>SMV W/Ded</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Cost/Min</label>
-                                        <input type="text"  />
-                                    </div>
-
-
-                                    <div class="side-divider"></div>
-
-
-                                    <div class="side-cost-row">
-                                        <label>Neg Price</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Fixed Tr</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Hanger</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row total-side-row">
-                                        <label>Total Neg</label>
-                                        <input type="text"  />
-                                    </div>
-
-
-                                    <div class="side-divider"></div>
-
-
-                                    <div class="side-cost-row">
-                                        <label>Trims Per Pc</label>
-                                        <input type="text" />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Trims</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Less Hanger</label>
-                                        <input type="text"  />
-                                    </div>
-
-
-                                    <div class="side-small-select-row">
-
-                                        <select>
-                                            <option></option>
-                                        </select>
-
-                                        <input type="text" />
-
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <div class="side-small-select-row">
-
-                                        <select>
-                                            <option></option>
-                                        </select>
-
-                                        <input type="text" />
-
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <div class="side-cost-row">
-                                        <label>Develop</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Non Quote</label>
-                                        <input type="text" />
-                                    </div>
-
-
-                                    <div class="side-cost-row total-side-row">
-                                        <label>Total Trims</label>
-                                        <input type="text"  />
-                                    </div>
-
-
-                                    <div class="side-divider"></div>
-
-
-                                    <div class="side-cost-row">
-                                        <label>Laser Cut</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Pleating</label>
-                                        <input type="text" />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Smocking</label>
-                                        <input type="text"  />
-                                    </div>
-
-                                    <div class="side-cost-row">
-                                        <label>Bonding</label>
-                                        <input type="text" />
-                                    </div>
-
-                                </div>
+                                <textarea rows="5"></textarea>
 
                             </div>
 
                         </div>
 
 
-                        <!-- =====================================================
-         PAGE NAVIGATION
-         ===================================================== -->
+                        <div class="section-card">
 
-                        <div class="form-footer">
+                            <div class="section-title compact">
 
-                            <button type="button"
-                                    class="navigation-button secondary"
-                                    onclick="previousPage()">
-                                ← Previous
-                            </button>
+                                <div class="section-icon">02</div>
 
-                            <div class="page-indicator">
-                                Page <strong id="currentPage">2</strong> of 5
-                            </div>
-
-                            <button type="button"
-                                    class="navigation-button primary"
-                                    onclick="nextPage()">
-                                Next →
-                            </button>
-
-                        </div>
-
-                    </section>
-
-                    <!-- =========================================================
-     PAGE 3 - FOB COST & PROFIT
-     ========================================================= -->
-
-                    <section class="form-page" id="page3">
-
-                        <div class="page-title">
-                            <h2>FOB Cost & Profit</h2>
-                            <p>FOB selling price, profitability and lot information.</p>
-                        </div>
-
-                        <div class="page3-foxpro-layout">
-
-                            <!-- =================================================
-             LEFT SIDE
-             ================================================= -->
-                            <div class="page3-left">
-
-                                <!-- FOB MATRIX -->
-                                <div class="page3-costing-box">
-
-                                    <!-- Column headings -->
-                                    <div class="page3-column-header">
-                                        <div></div>
-                                        <div class="fox-red-heading">AIR</div>
-                                        <div class="fox-red-heading">Vessel</div>
-                                        <div class="fox-red-heading">Act Fty</div>
-                                        <div>
-                                            <input type="text"
-                                                   
-                                                   class="fox-yellow-input" />
-                                        </div>
-                                    </div>
-
-
-                                    <!-- Sub Totals -->
-                                    <div class="page3-cost-row subtotal-cost-row">
-
-                                        <label>Sub Totals</label>
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                    </div>
-
-
-                                    <!-- Divider -->
-                                    <div class="page3-divider"></div>
-
-
-                                    <!-- Acct Surchg Qty -->
-                                    <div class="page3-cost-row">
-
-                                        <label>Acct Surchg Qty</label>
-
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <!-- Acct Quota Chg -->
-                                    <div class="page3-cost-row">
-
-                                        <label>Acct Quota Chg</label>
-
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <!-- Freight Warehouse -->
-                                    <div class="page3-cost-row">
-
-                                        <label>Freight Warehouse</label>
-
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <!-- Duty -->
-                                    <div class="page3-cost-row">
-
-                                        <label>Duty</label>
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                    </div>
-
-
-                                    <!-- NDT Value Add Services -->
-                                    <div class="page3-cost-row">
-
-                                        <label>NDT Value Add Services</label>
-
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-                                        <input type="text"  />
-
-                                    </div>
-
-
-                                    <!-- FOB Selling Price -->
-                                    <div class="page3-selling-row">
-
-                                        <label>FOB Selling Price</label>
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- Large blank FoxPro area -->
-                                <div class="page3-large-work-area">
+                                <div>
+                                    <h2>Style Lots</h2>
+                                    <p>Lot, colour and confirmed price details.</p>
                                 </div>
 
                             </div>
 
 
-                            <!-- =================================================
-             RIGHT SIDE
-             ================================================= -->
-                            <div class="page3-right">
+                            <div class="table-container">
 
-                                <!-- PROFITABILITY -->
-                                <div class="profitability-box">
-
-                                    <div class="profit-row">
-                                        <label>Profit %</label>
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-                                    </div>
-
-
-                                    <div class="profit-row">
-                                        <label>P.P Minute</label>
-
-                                        <input type="text"
-                                             
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                              
-                                               class="fox-yellow-input" />
-                                    </div>
-
-
-                                    <div class="profit-date-row">
-
-                                        <label>CFMD Date</label>
-
-                                        <input type="text"
-                                              />
-
-                                    </div>
-
-
-                                    <div class="profit-row">
-                                        <label>Gross Profit</label>
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-                                    </div>
-
-
-                                    <div class="profit-row">
-                                        <label>Profit Margin</label>
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-
-                                        <input type="text"
-                                               
-                                               class="fox-yellow-input" />
-                                    </div>
-
-                                </div>
-
-
-                                <!-- =================================================
-                 LDP LOTS
-                 ================================================= -->
-                                <div class="lot-section">
-
-                                    <div class="lot-title">
-                                        LDP Lots
-                                    </div>
-
-                                    <div class="lot-table-wrapper">
-
-                                        <table class="lot-table">
-
-                                            <thead>
-                                                <tr>
-                                                    <th class="lot-selector-column"></th>
-                                                    <th>Lots</th>
-                                                    <th>Doz</th>
-                                                    <th>Pcs</th>
-                                                    <th>Tot Pcs</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                                @for (int i = 0; i < 7; i++)
-                                                {
-                                                    <tr>
-
-                                                        <td class="lot-selector">
-                                                            @if (i == 0)
-                                                            {
-                                                                <span>▶</span>
-                                                            }
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                    </tr>
-                                                }
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-                                </div>
-
-
-                                <!-- =================================================
-                 FOB LOTS
-                 ================================================= -->
-                                <div class="lot-section fob-lot-section">
-
-                                    <div class="lot-title">
-                                        FOB Lots
-                                    </div>
-
-                                    <div class="lot-table-wrapper">
-
-                                        <table class="lot-table">
-
-                                            <thead>
-                                                <tr>
-                                                    <th class="lot-selector-column"></th>
-                                                    <th>Lots</th>
-                                                    <th>Doz</th>
-                                                    <th>Pcs</th>
-                                                    <th>Tot Pcs</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                                @for (int i = 0; i < 7; i++)
-                                                {
-                                                    <tr>
-
-                                                        <td class="lot-selector">
-                                                            @if (i == 0)
-                                                            {
-                                                                <span>▶</span>
-                                                            }
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                    </tr>
-                                                }
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- =====================================================
-         PAGE NAVIGATION
-         ===================================================== -->
-
-                        <div class="form-footer">
-
-                            <button type="button"
-                                    class="navigation-button secondary"
-                                    onclick="previousPage()">
-                                ← Previous
-                            </button>
-
-                            <div class="page-indicator">
-                                Page <strong>3</strong> of 5
-                            </div>
-
-                            <button type="button"
-                                    class="navigation-button primary"
-                                    onclick="nextPage()">
-                                Next →
-                            </button>
-
-                        </div>
-
-                    </section>
-                  <!-- =========================================================
-     PAGE 4 - BASIC TRIMS
-     ========================================================= -->
-
-                    <section class="form-page" id="page4">
-
-                        <div class="page-title">
-                            <h2>Basic Trims</h2>
-                            <p>Basic trim costing, approval and document information.</p>
-                        </div>
-
-
-                        <!-- =====================================================
-         BASIC TRIMS FOXPRO GRID
-         ===================================================== -->
-
-                        <div class="page4-trims-box">
-
-                            <!-- Section title -->
-                            <div class="page4-trims-title">
-                                BASIC TRIMS
-                            </div>
-
-
-                            <!-- Scrollable trims table -->
-                            <div class="page4-trims-scroll">
-
-                                <table class="page4-trims-table">
+                                <table class="data-table">
 
                                     <thead>
+
                                         <tr>
-
-                                            <th class="rec-column">
-                                                Rec no
-                                            </th>
-
-                                            <th class="novelty-column">
-                                                Novelty
-                                            </th>
-
-                                            <th class="trim-code-column">
-                                                Trim Code
-                                            </th>
-
-                                            <th class="type-column">
-                                                Type
-                                            </th>
-
-                                            <th class="description-column">
-                                                Trim Description
-                                            </th>
-
-                                            <th class="qty-column">
-                                                Qty Pcs
-                                            </th>
-
-                                            <th class="unit-cost-column">
-                                                Unit Cost
-                                            </th>
-
-                                            <th class="trim-unit-column">
-                                                Trim Unit
-                                            </th>
-
-                                            <th class="trim-cost-column">
-                                                Trim Cost
-                                            </th>
-
-                                            <th class="cost-plus-column">
-                                                Cost +
-                                            </th>
-
+                                            <th>Lot</th>
+                                            <th>Color</th>
+                                            <th>Lot Style</th>
+                                            <th>Ref No</th>
+                                            <th>LDP Price</th>
+                                            <th>FOB Price</th>
+                                            <th>Confirm</th>
                                         </tr>
-                                    </thead>
 
-
-                                    <tbody>
-
-                                     
-
-
-                                        <!-- EMPTY ROWS -->
-                                        @for (int i = 2; i <= 12; i++)
-                                        {
-                                            <tr>
-
-                                                <td class="rec-cell">
-                                                    <input type="text" value="@i" />
-                                                </td>
-
-                                                <td class="novelty-cell">
-                                                    <input type="checkbox" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td class="yellow-trim-cell">
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td class="yellow-trim-cell">
-                                                    <input type="text" />
-                                                </td>
-
-                                            </tr>
-                                        }
-
-                                    </tbody>
-
-                                </table>
-
-                            </div>
-
-
-                            <!-- =================================================
-             TOTAL VALUES
-             ================================================= -->
-
-                            <div class="page4-trim-totals">
-
-                                <div></div>
-
-                                <div class="trim-total">
-                                    <input type="text"  />
-                                </div>
-
-                                <div class="trim-total">
-                                    <input type="text"  />
-                                </div>
-
-                                <div class="trim-total">
-                                    <input type="text" />
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- =====================================================
-         APPROVAL AND DOCUMENTS
-         ===================================================== -->
-
-                        <div class="page4-approval-box">
-
-                            <!-- First row -->
-
-                            <div class="page4-approval-row">
-
-                                <div class="approval-check">
-
-                                    <label>Cost Sheet Signed</label>
-
-                                    <input type="checkbox"/>
-
-                                </div>
-
-
-                                <div class="approval-field">
-
-                                    <label>Approved By</label>
-
-                                    <select>
-                                        <option>Mr. SUKUMARAN</option>
-                                    </select>
-
-                                </div>
-
-
-                                <div class="approval-field receive-date">
-
-                                    <label>Receive Date</label>
-
-                                    <input type="text"
-                                            />
-
-                                </div>
-
-
-                                <button type="button"
-                                        class="fox-document-button">
-
-                                    📎 Attach File
-
-                                </button>
-
-
-                                <button type="button"
-                                        class="fox-document-button">
-
-                                    📄 View File
-
-                                </button>
-
-                            </div>
-
-
-                            <!-- Remarks -->
-
-                            <div class="page4-remarks-row">
-
-                                <label>Remarks</label>
-
-                                <input type="text"
-                                       placeholder="" />
-
-                            </div>
-
-
-                            <!-- Bottom controls -->
-
-                            <div class="page4-controls-row">
-
-                                <button type="button"
-                                        class="fox-document-button">
-
-                                    📎 Copy Trims
-
-                                </button>
-
-
-                                <button type="button"
-                                        class="fox-document-button">
-
-                                    📁 Attach PO
-
-                                </button>
-
-
-                                <div class="merchandiser-field">
-
-                                    <label>Merchandiser</label>
-
-                                    <input type="text"
-                                            />
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- =====================================================
-         PAGE NAVIGATION
-         ===================================================== -->
-
-                        <div class="form-footer">
-
-                            <button type="button"
-                                    class="navigation-button secondary"
-                                    onclick="previousPage()">
-
-                                ← Previous
-
-                            </button>
-
-
-                            <div class="page-indicator">
-
-                                Page <strong>4</strong> of 5
-
-                            </div>
-
-
-                            <button type="button"
-                                    class="navigation-button primary"
-                                    onclick="nextPage()">
-
-                                Next →
-
-                            </button>
-
-                        </div>
-
-                    </section>
-                    <!-- =========================================================
-     PAGE 5 - CONFIRMATION & STYLES
-     ========================================================= -->
-
-                    <section class="form-page" id="page5">
-
-                        <div class="page-title">
-                            <h2>Confirmation & Styles</h2>
-                            <p>OPS styles, confirmation costing and style lot information.</p>
-                        </div>
-
-
-                        <div class="page5-foxpro-layout">
-
-
-                            <!-- =================================================
-             LEFT - OPS STYLE
-             ================================================= -->
-
-                            <div class="page5-ops-box">
-
-                                <table class="page5-ops-table">
-
-                                    <thead>
-                                        <tr>
-                                            <th class="ops-no-column">No</th>
-                                            <th class="ops-style-column">OPS Style</th>
-                                            <th class="ops-ref-column">Ref No</th>
-                                            <th class="ops-check-column"></th>
-                                        </tr>
                                     </thead>
 
                                     <tbody>
 
-                                        @for (int i = 1; i <= 20; i++)
+                                        @for (int i = 0; i < 8; i++)
                                         {
                                             <tr>
 
-                                                <td>
-                                                    <input type="text" />
+                                                <td><input type="text" /></td>
+
+                                                <td><input type="text" /></td>
+
+                                                <td><input type="text" /></td>
+
+                                                <td><input type="text" /></td>
+
+                                                <td class="highlight-cell">
+                                                    <input type="number" />
                                                 </td>
 
-                                                <td>
-                                                    <input type="text" />
+                                                <td class="highlight-cell">
+                                                    <input type="number" />
                                                 </td>
 
-                                                <td>
-                                                    <input type="text" />
-                                                </td>
-
-                                                <td class="page5-checkbox-cell">
+                                                <td class="check-cell">
                                                     <input type="checkbox" />
                                                 </td>
 
@@ -2064,173 +1571,86 @@
                             </div>
 
 
-                            <!-- =================================================
-             RIGHT SIDE
-             ================================================= -->
+                            <div class="save-styles-row">
 
-                            <div class="page5-right">
-
-
-                                <!-- =================================================
-                 REASON TO CHANGE
-                 ================================================= -->
-
-                                <div class="page5-reason-box">
-
-                                    <label>
-                                        Reason To Change The Confirm Costing
-                                    </label>
-
-                                    <textarea></textarea>
-
-                                </div>
-
-
-                                <!-- =================================================
-                 STYLE / LOT TABLE
-                 ================================================= -->
-
-                                <div class="page5-style-box">
-
-                                    <div class="page5-style-scroll">
-
-                                        <table class="page5-style-table">
-
-                                            <thead>
-
-                                                <tr>
-
-                                                    <th class="style-lot-column">
-                                                        Lot
-                                                    </th>
-
-                                                    <th class="style-color-column">
-                                                        Color
-                                                    </th>
-
-                                                    <th class="style-lot-style-column">
-                                                        Lot Style
-                                                    </th>
-
-                                                    <th class="style-ref-column">
-                                                        Ref No
-                                                    </th>
-
-                                                    <th class="style-ldp-column">
-                                                        Ldp Price
-                                                    </th>
-
-                                                    <th class="style-fob-column">
-                                                        Fob Price
-                                                    </th>
-
-                                                    <th class="style-confirm-column">
-                                                    </th>
-
-                                                </tr>
-
-                                            </thead>
-
-                                            <tbody>
-
-                                                @for (int i = 1; i <= 15; i++)
-                                                {
-                                                    <tr>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td>
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="yellow-style-cell">
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="yellow-style-cell">
-                                                            <input type="text" />
-                                                        </td>
-
-                                                        <td class="page5-checkbox-cell">
-                                                            <input type="checkbox" />
-                                                        </td>
-
-                                                    </tr>
-                                                }
-
-                                            </tbody>
-
-                                        </table>
-
-                                    </div>
-
-
-                                    <!-- Save Styles -->
-
-                                    <div class="page5-save-area">
-
-                                        <button type="button"
-                                                class="save-styles-button"
-                                                disabled>
-                                            Save Styles
-                                        </button>
-
-                                    </div>
-
-                                </div>
+                                <button type="button" class="primary-button">
+                                    Save Styles
+                                </button>
 
                             </div>
 
                         </div>
 
+                    </div>
 
-                        <!-- =====================================================
-         PAGE NAVIGATION
-         ===================================================== -->
+                </div>
 
-                        <div class="form-footer page5-footer">
+            </section>
 
-                            <div></div>
+        </main>
 
-                            <div class="page-indicator">
-                                Page <strong>5</strong> of 5
-                            </div>
 
-                            <button type="button"
-                                    class="navigation-button secondary"
-                                    onclick="previousPage()">
-                                ← Previous
-                            </button>
-
-                        </div>
-
-                    </section>
-
-                    
-               
-            <!-- =========================================================
-         FORM ACTION FOOTER
-         THESE BUTTONS REMAIN ON ALL 5 PAGES
+        <!-- =========================================================
+         NAVIGATION FOOTER
          ========================================================= -->
 
-            <div class="action-footer">
+        <div class="page-navigation">
+
+            <button type="button"
+                    id="previousButton"
+                    class="navigation-button previous-button"
+                    onclick="previousPage()">
+
+                <span>‹</span>
+                Previous
+
+            </button>
+
+
+            <div class="page-count">
+
+                <strong id="currentPage">1</strong>
+
+                <span>of 5</span>
+
+            </div>
+
+
+            <button type="button"
+                    id="nextButton"
+                    class="navigation-button next-button"
+                    onclick="nextPage()">
+
+                Next
+                <span>›</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================================================
+         ACTION FOOTER
+         ========================================================= -->
+
+        <footer class="action-footer">
+
+            <div class="footer-status">
+
+                <span class="status-dot"></span>
+
+                <span>FOB Costing Form</span>
+
+            </div>
+
+
+            <div class="action-buttons">
 
                 <button type="button"
                         class="action-button update-button"
                         onclick="updateCosting()">
 
-                    <span>↻</span>
-
+                    <span>▣</span>
                     Update
 
                 </button>
@@ -2240,8 +1660,7 @@
                         class="action-button revision-button"
                         onclick="saveAsRevision()">
 
-                    <span>＋</span>
-
+                    <span>⟳</span>
                     Save As Revision
 
                 </button>
@@ -2252,7 +1671,6 @@
                         onclick="updateMas()">
 
                     <span>✓</span>
-
                     Update MAS
 
                 </button>
@@ -2262,9 +1680,181 @@
                         class="action-button close-button"
                         onclick="closeForm()">
 
-                    <span>×</span>
-
+                    <span>↪</span>
                     Close
+
+                </button>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================================
+     REVISION MODAL
+     ========================================================= -->
+
+    <div class="revision-modal"
+         id="revisionModal"
+         aria-hidden="true">
+
+        <div class="revision-dialog">
+
+            <div class="revision-header">
+
+                <div>
+
+                    <span>REVISION MANAGEMENT</span>
+
+                    <h2>Select Revision</h2>
+
+                </div>
+
+                <button type="button"
+                        class="modal-close"
+                        onclick="closeRevisionModal()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <div class="revision-search">
+
+                <input id="revisionSearchValue"
+                       type="text"
+                       placeholder="Enter style number..." />
+
+                <button type="button"
+                        onclick="searchRevisions()">
+
+                    Search
+
+                </button>
+
+            </div>
+
+
+            <div class="revision-table-container">
+
+                <table class="revision-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Style Code</th>
+                            <th>Display Style</th>
+                            <th>Type</th>
+                            <th>Rev No</th>
+                            <th>Ref No</th>
+                            <th>Sub Tot Air</th>
+                            <th>Sub Tot Ves</th>
+                            <th>Sel Ac Air</th>
+                            <th>Sel Ac Ves</th>
+                            <th>Sel Fty Air</th>
+                            <th>Sel Fty Ves</th>
+                            <th>Create Date</th>
+                            <th>Input Date</th>
+                            <th>Modify Date</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="revisionTableBody">
+
+                        <tr onclick="selectRevision(this)"
+                            data-style="9144"
+                            data-display="9144-A1"
+                            data-rev="0"
+                            data-ref="4701">
+
+                            <td>9144</td>
+                            <td>9144-A1</td>
+                            <td>FOB</td>
+                            <td>0</td>
+                            <td>4701</td>
+                            <td>3.9148</td>
+                            <td>3.9148</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>05/18/2023</td>
+                            <td>05/18/2023</td>
+                            <td>05/18/2023</td>
+
+                        </tr>
+
+
+                        <tr onclick="selectRevision(this)"
+                            data-style="9144"
+                            data-display="9144-A1"
+                            data-rev="1"
+                            data-ref="4701">
+
+                            <td>9144</td>
+                            <td>9144-A1</td>
+                            <td>FOB</td>
+                            <td>1</td>
+                            <td>4701</td>
+                            <td>3.9148</td>
+                            <td>3.9148</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>06/01/2023</td>
+                            <td>06/01/2023</td>
+                            <td>06/01/2023</td>
+
+                        </tr>
+
+
+                        <tr onclick="selectRevision(this)"
+                            data-style="9144"
+                            data-display="9144-A1"
+                            data-rev="2"
+                            data-ref="4701">
+
+                            <td>9144</td>
+                            <td>9144-A1</td>
+                            <td>FOB</td>
+                            <td>2</td>
+                            <td>4701</td>
+                            <td>3.9148</td>
+                            <td>3.9148</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>3.2819</td>
+                            <td>06/15/2023</td>
+                            <td>06/15/2023</td>
+                            <td>06/15/2023</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="revision-footer">
+
+                <span id="selectedRevisionText">
+                    No revision selected
+                </span>
+
+                <button type="button"
+                        class="primary-button"
+                        onclick="applyRevision()">
+
+                    Select Revision
 
                 </button>
 
@@ -2272,527 +1862,409 @@
 
         </div>
 
+    </div>
 
-        <!-- =========================================================
-     REVISION MODAL
-     ========================================================= -->
 
-        <div id="revisionModal"
-             class="revision-modal">
+    <script>
 
-            <div class="revision-modal-box">
+            let currentPage = 1;
 
+            let selectedRevision = null;
 
-                <div class="revision-modal-header">
 
-                    <div>
+            /* =====================================================
+               PAGE NAVIGATION
+               ===================================================== */
 
-                        <span class="revision-modal-label">
-                            REVISION MANAGEMENT
-                        </span>
+            function showPage(pageNumber) {
 
-                        <h2>
-                            Select Revision
-                        </h2>
+                if (pageNumber < 1 || pageNumber > 5) {
+                    return;
+                }
 
-                        <p>
-                            Select the revision you want to modify.
-                        </p>
+                document
+                    .querySelectorAll(".form-page")
+                    .forEach(page => {
+                        page.classList.remove("active-page");
+                    });
 
-                    </div>
 
+                const page = document.getElementById(
+                    "page" + pageNumber
+                );
 
-                    <button type="button"
-                            class="revision-close"
-                            onclick="closeRevisionModal()">
+                if (page) {
+                    page.classList.add("active-page");
+                }
 
-                        ×
 
-                    </button>
+                document
+                    .querySelectorAll(".page-tab")
+                    .forEach(tab => {
 
-                </div>
+                        tab.classList.remove("active");
 
-
-                <div class="revision-search-area">
-
-                    <div class="revision-account">
-
-                        <label>
-                            Style / Account
-                        </label>
-
-                        <input type="text"
-                               id="revisionSearchValue"
-                               placeholder="Enter style number" />
-
-                    </div>
-
-
-                    <button type="button"
-                            class="revision-search-button"
-                            onclick="searchRevisions()">
-
-                        Search
-
-                    </button>
-
-                </div>
-
-
-                <div class="revision-table-wrapper">
-
-                    <table class="revision-table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>Style Code</th>
-                                <th>Display Style</th>
-                                <th>Type</th>
-                                <th>Rev No</th>
-                                <th>Ref No</th>
-                                <th>Sub Tot Air</th>
-                                <th>Sub Tot Ves</th>
-                                <th>Sel Ac Air</th>
-                                <th>Sel Ac Ves</th>
-                                <th>Sel Fty Air</th>
-                                <th>Sel Fty Ves</th>
-                                <th>Create Date</th>
-                                <th>Input Date</th>
-                                <th>Modify Date</th>
-
-                            </tr>
-
-                        </thead>
-
-
-                        <tbody id="revisionTableBody">
-
-                            <tr onclick="selectRevision(this)">
-
-                                <td>9144</td>
-                                <td>9144_A1</td>
-                                <td>FOB</td>
-                                <td>0</td>
-                                <td>4701</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.34</td>
-                                <td>3.34</td>
-                                <td>04/07/2023</td>
-                                <td>05/16/2023</td>
-                                <td>05/16/2023</td>
-
-                            </tr>
-
-
-                            <tr onclick="selectRevision(this)">
-
-                                <td>9144</td>
-                                <td>9144_A1</td>
-                                <td>FOB</td>
-                                <td>1</td>
-                                <td>4701</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.91</td>
-                                <td>3.33</td>
-                                <td>3.33</td>
-                                <td>05/18/2023</td>
-                                <td>05/23/2023</td>
-                                <td>05/24/2023</td>
-
-                            </tr>
-
-
-                            <tr onclick="selectRevision(this)">
-
-                                <td>9144</td>
-                                <td>9144_A1</td>
-                                <td>FOB</td>
-                                <td>2</td>
-                                <td>4701</td>
-                                <td>3.95</td>
-                                <td>3.95</td>
-                                <td>3.95</td>
-                                <td>3.95</td>
-                                <td>3.38</td>
-                                <td>3.38</td>
-                                <td>06/10/2023</td>
-                                <td>06/15/2023</td>
-                                <td>06/16/2023</td>
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-
-                <div class="revision-modal-footer">
-
-                    <div class="revision-count">
-
-                        <strong id="revisionCount">
-                            3
-                        </strong>
-
-                        revisions found
-
-                    </div>
-
-
-                    <div class="revision-actions">
-
-                        <button type="button"
-                                class="revision-cancel"
-                                onclick="closeRevisionModal()">
-
-                            Cancel
-
-                        </button>
-
-
-                        <button type="button"
-                                class="revision-select"
-                                onclick="loadSelectedRevision()">
-
-                            Select Revision
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <script>
-
-                    /* =========================================================
-                       PAGE NAVIGATION
-                       ========================================================= */
-
-                    let currentPage = 1;
-
-                    const totalPages = 5;
-
-                    let selectedRevision = null;
-
-
-                    function showPage(pageNumber) {
-                        if (pageNumber < 1 || pageNumber > totalPages) {
-                            return;
+                        if (
+                            Number(tab.dataset.page) === pageNumber
+                        ) {
+                            tab.classList.add("active");
                         }
 
+                    });
 
-                        currentPage = pageNumber;
 
+                currentPage = pageNumber;
 
-                        document
-                            .querySelectorAll(".form-page")
-                            .forEach(function(page) {
-                                page.classList.remove("active-page");
-                            });
+                document.getElementById("currentPage").textContent =
+                    pageNumber;
 
 
-                        document
-                            .getElementById("page" + pageNumber)
-                            .classList.add("active-page");
+                const previousButton =
+                    document.getElementById("previousButton");
 
+                const nextButton =
+                    document.getElementById("nextButton");
 
-                        document
-                            .querySelectorAll(".page-tab")
-                            .forEach(function(tab, index) {
-                                tab.classList.remove("active");
 
-                                if (index + 1 === pageNumber) {
-                                    tab.classList.add("active");
-                                }
-                            });
+                previousButton.disabled =
+                    pageNumber === 1;
 
 
-                        document.getElementById("currentPage")
-                            .textContent = pageNumber;
+                if (pageNumber === 5) {
 
+                    nextButton.innerHTML =
+                        "Finish <span>✓</span>";
 
-                        document.getElementById("previousButton")
-                            .disabled = pageNumber === 1;
+                }
+                else {
 
+                    nextButton.innerHTML =
+                        "Next <span>›</span>";
 
-                        if (pageNumber === totalPages) {
-                            document.getElementById("nextButton")
-                                .textContent = "Finish ✓";
-                        }
-                        else {
-                            document.getElementById("nextButton")
-                                .textContent = "Next →";
-                        }
+                }
 
 
-                        window.scrollTo({
-                            top: 0,
-                            behavior: "smooth"
-                        });
-                    }
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
+            }
 
-                    function nextPage() {
-                        if (currentPage < totalPages) {
-                            showPage(currentPage + 1);
-                        }
-                    }
 
+            function nextPage() {
 
-                    function previousPage() {
-                        if (currentPage > 1) {
-                            showPage(currentPage - 1);
-                        }
-                    }
+                if (currentPage < 5) {
 
+                    showPage(currentPage + 1);
 
-                    /* =========================================================
-                       REVISION MODAL
-                       ========================================================= */
+                }
+                else {
 
-                    function openRevisionModal() {
-                        const styleNumber =
-                            document
-                                .getElementById("styleNumber")
-                                .value
-                                .trim();
+                    closeForm();
 
+                }
 
-                        if (styleNumber === "") {
-                            alert(
-                                "Please enter a style number first."
-                            );
+            }
 
-                            document
-                                .getElementById("styleNumber")
-                                .focus();
 
-                            return;
-                        }
+            function previousPage() {
 
+                if (currentPage > 1) {
 
-                        document
-                            .getElementById("revisionSearchValue")
-                            .value = styleNumber;
+                    showPage(currentPage - 1);
 
+                }
 
-                        document
-                            .getElementById("revisionModal")
-                            .classList.add("show");
+            }
 
 
-                        selectedRevision = null;
+            /* =====================================================
+               STYLE HEADER
+               ===================================================== */
 
+            function updateHeaderStyle() {
 
-                        document
-                            .querySelectorAll(
-                                ".revision-table tbody tr"
-                            )
-                            .forEach(function(row) {
-                                row.classList.remove("selected");
-                            });
-                    }
+                const style =
+                    document.getElementById("styleNumber").value;
 
+                document.getElementById("headerStyleNo").textContent =
+                    style || "—";
 
-                    function closeRevisionModal() {
-                        document
-                            .getElementById("revisionModal")
-                            .classList.remove("show");
-                    }
+            }
 
 
-                    function selectRevision(row) {
-                        document
-                            .querySelectorAll(
-                                ".revision-table tbody tr"
-                            )
-                            .forEach(function(item) {
-                                item.classList.remove("selected");
-                            });
+            /* =====================================================
+               REVISION MODAL
+               ===================================================== */
 
+            function openRevisionModal() {
 
-                        row.classList.add("selected");
+                const modal =
+                    document.getElementById("revisionModal");
 
+                modal.classList.add("show");
 
-                        const cells =
-                            row.querySelectorAll("td");
+                modal.setAttribute("aria-hidden", "false");
 
+                document
+                    .getElementById("revisionSearchValue")
+                    .focus();
 
-                        selectedRevision =
-                        {
-                            styleCode:
-                                cells[0].textContent.trim(),
+            }
 
-                            displayStyle:
-                                cells[1].textContent.trim(),
 
-                            type:
-                                cells[2].textContent.trim(),
+            function closeRevisionModal() {
 
-                            revisionNo:
-                                cells[3].textContent.trim(),
+                const modal =
+                    document.getElementById("revisionModal");
 
-                            refNo:
-                                cells[4].textContent.trim(),
+                modal.classList.remove("show");
 
-                            createDate:
-                                cells[11].textContent.trim()
-                        };
-                    }
+                modal.setAttribute("aria-hidden", "true");
 
+            }
 
-                    function loadSelectedRevision() {
-                        if (!selectedRevision) {
-                            alert(
-                                "Please select a revision to modify."
-                            );
 
-                            return;
-                        }
+            function selectRevision(row) {
 
+                document
+                    .querySelectorAll(".revision-table tbody tr")
+                    .forEach(item => {
 
-                        document
-                            .getElementById("styleNumber")
-                            .value =
-                            selectedRevision.styleCode;
+                        item.classList.remove("selected");
 
+                    });
 
-                        document
-                            .getElementById("displayStyle")
-                            .value =
-                            selectedRevision.displayStyle;
 
+                row.classList.add("selected");
 
-                        document
-                            .getElementById("revisionNo")
-                            .value =
-                            selectedRevision.revisionNo;
 
+                selectedRevision = {
 
-                        document
-                            .getElementById("refNo")
-                            .value =
-                            selectedRevision.refNo;
+                    style:
+                        row.dataset.style,
 
+                    display:
+                        row.dataset.display,
 
-                        document
-                            .getElementById("costingRevision")
-                            .value =
-                            selectedRevision.revisionNo;
+                    revision:
+                        row.dataset.rev,
 
+                    ref:
+                        row.dataset.ref
 
-                        document
-                            .getElementById("costingStatus")
-                            .value =
-                            "SIGNED";
+                };
 
 
-                        closeRevisionModal();
-                    }
+                document.getElementById(
+                    "selectedRevisionText"
+                ).textContent =
+                    "Selected: Style " +
+                    selectedRevision.style +
+                    " / Revision " +
+                    selectedRevision.revision;
 
+            }
 
-                    function searchRevisions() {
-                        alert(
-                            "SQL revision search will be connected later."
-                        );
-                    }
 
+            function applyRevision() {
 
-                    /* =========================================================
-                       FORM ACTIONS
-                       ========================================================= */
+                if (!selectedRevision) {
 
-                    function updateCosting() {
-                        alert(
-                            "Update will be connected to SQL later."
-                        );
-                    }
-
-
-                    function saveAsRevision() {
-                        alert(
-                            "Save As Revision will be connected later."
-                        );
-                    }
-
-
-                    function updateMas() {
-                        alert(
-                            "Update MAS will be connected later."
-                        );
-                    }
-
-
-                    function closeForm() {
-                        window.location.href =
-                            "/Home/Index";
-                    }
-
-
-                    /* =========================================================
-                       MODAL OUTSIDE CLICK
-                       ========================================================= */
-
-                    document
-                        .getElementById("revisionModal")
-                        .addEventListener(
-                            "click",
-                            function(event) {
-                                if (event.target === this) {
-                                    closeRevisionModal();
-                                }
-                            }
-                        );
-
-
-                    /* =========================================================
-                       KEYBOARD NAVIGATION
-                       ========================================================= */
-
-                    document.addEventListener(
-                        "keydown",
-                        function(event) {
-                            if (
-                                event.key === "ArrowRight" &&
-                                currentPage < totalPages
-                            ) {
-                                nextPage();
-                            }
-
-
-                            if (
-                                event.key === "ArrowLeft" &&
-                                currentPage > 1
-                            ) {
-                                previousPage();
-                            }
-
-
-                            if (event.key === "Escape") {
-                                closeRevisionModal();
-                            }
-                        }
+                    alert(
+                        "Please select a revision first."
                     );
 
+                    return;
 
-                    showPage(1);
+                }
 
-        </script>
 
-    </body>
+                document.getElementById(
+                    "styleNumber"
+                ).value =
+                    selectedRevision.style;
 
+
+                document.getElementById(
+                    "displayStyle"
+                ).value =
+                    selectedRevision.display;
+
+
+                document.getElementById(
+                    "revisionNo"
+                ).value =
+                    selectedRevision.revision;
+
+
+                document.getElementById(
+                    "refNo"
+                ).value =
+                    selectedRevision.ref;
+
+
+                document.getElementById(
+                    "costingRevision"
+                ).value =
+                    selectedRevision.revision;
+
+
+                document.getElementById(
+                    "headerStyleNo"
+                ).textContent =
+                    selectedRevision.style;
+
+
+                document.getElementById(
+                    "headerRevision"
+                ).textContent =
+                    selectedRevision.revision;
+
+
+                closeRevisionModal();
+
+            }
+
+
+            function searchRevisions() {
+
+                const search =
+                    document
+                        .getElementById(
+                            "revisionSearchValue"
+                        )
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+
+                document
+                    .querySelectorAll(
+                        "#revisionTableBody tr"
+                    )
+                    .forEach(row => {
+
+                        const text =
+                            row.textContent.toLowerCase();
+
+                        row.style.display =
+                            text.includes(search)
+                                ? ""
+                                : "none";
+
+                    });
+
+            }
+
+
+            /* =====================================================
+               ACTION BUTTONS
+               ===================================================== */
+
+            function updateCosting() {
+
+                alert(
+                    "Update will be connected to the existing SQL database later."
+                );
+
+            }
+
+
+            function saveAsRevision() {
+
+                alert(
+                    "Save As Revision will create a new revision when SQL is connected."
+                );
+
+            }
+
+
+            function updateMas() {
+
+                alert(
+                    "Update MAS will be connected to the existing MAS process later."
+                );
+
+            }
+
+
+            function closeForm() {
+
+                window.location.href =
+                    "/Home/Index";
+
+            }
+
+
+            /* =====================================================
+               KEYBOARD NAVIGATION
+               ===================================================== */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "ArrowRight" &&
+                        !event.target.matches("input, textarea, select")
+                    ) {
+
+                        nextPage();
+
+                    }
+
+
+                    if (
+                        event.key === "ArrowLeft" &&
+                        !event.target.matches("input, textarea, select")
+                    ) {
+
+                        previousPage();
+
+                    }
+
+
+                    if (event.key === "Escape") {
+
+                        closeRevisionModal();
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               CLOSE MODAL WHEN CLICKING OUTSIDE
+               ===================================================== */
+
+            document
+                .getElementById("revisionModal")
+                .addEventListener(
+                    "click",
+                    function (event) {
+
+                        if (
+                            event.target === this
+                        ) {
+
+                            closeRevisionModal();
+
+                        }
+
+                    }
+                );
+
+
+            /* =====================================================
+               INITIALIZE
+               ===================================================== */
+
+            showPage(1);
+
+    </script>
+
+</body>
 </html>
